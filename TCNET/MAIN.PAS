@@ -447,7 +447,7 @@ uses
   end;
 
 var
-  MainForm: TMainForm;      //---25/01/2017 
+  MainForm: TMainForm;      
 
 implementation
 
