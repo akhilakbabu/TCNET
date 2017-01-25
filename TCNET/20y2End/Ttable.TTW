@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<TTW_DATA>
+  <ttMainFormat VALUE="16"/>
+  <DAYS VALUE="5"/>
+  <PERIODS VALUE="8"/>
+  <YEARS VALUE="8"/>
+  <LEVEL_MAX VALUE="93"/>
+  <BLOCK INDEX="0" VALUE="6"/>
+  <BLOCK INDEX="1" VALUE="6"/>
+  <BLOCK INDEX="2" VALUE="6"/>
+  <BLOCK INDEX="3" VALUE="6"/>
+  <BLOCK INDEX="4" VALUE="6"/>
+  <BLOCK INDEX="5" VALUE="6"/>
+  <BLOCK INDEX="6" VALUE="0"/>
+  <BLOCK INDEX="7" VALUE="0"/>
+  <LEVEL INDEX="0" VALUE="6"/>
+  <LEVEL INDEX="1" VALUE="6"/>
+  <LEVEL INDEX="2" VALUE="6"/>
+  <LEVEL INDEX="3" VALUE="6"/>
+  <LEVEL INDEX="4" VALUE="6"/>
+  <LEVEL INDEX="5" VALUE="7"/>
+  <LEVEL INDEX="6" VALUE="8"/>
+  <LEVEL INDEX="7" VALUE="3"/>
+  <VERSION VALUE="AMIG TRAINING"/>
+  <TEACHER_CLASH X="0" Y="0" VALUE="0"/>
+  <TEACHER_CLASH X="0" Y="1" VALUE="0"/>
+  <TEACHER_CLASH X="0" Y="2" VALUE="0"/>
+  <TEACHER_CLASH X="0" Y="3" VALUE="0"/>
+  <TEACHER_CLASH X="0" Y="4" VALUE="0"/>
+  <TEACHER_CLASH X="0" Y="5" VALUE="0"/>
+  <TEACHER_CLASH X="0" Y="6" VALUE="0"/>
+  <TEACHER_CLASH X="0" Y="7" VALUE="0"/>
+  <TEACHER_CLASH X="1" Y="0" VALUE="0"/>
+  <TEACHER_CLASH X="1" Y="1" VALUE="0"/>
+  <TEACHER_CLASH X="1" Y="2" VALUE="0"/>
+  <TEACHER_CLASH X="1" Y="3" VALUE="0"/>
+  <TEACHER_CLASH X="1" Y="4" VALUE="0"/>
+  <TEACHER_CLASH X="1" Y="5" VALUE="0"/>
+  <TEACHER_CLASH X="1" Y="6" VALUE="0"/>
+  <TEACHER_CLASH X="1" Y="7" VALUE="0"/>
+  <TEACHER_CLASH X="2" Y="0" VALUE="0"/>
+  <TEACHER_CLASH X="2" Y="1" VALUE="0"/>
+  <TEACHER_CLASH X="2" Y="2" VALUE="0"/>
+  <TEACHER_CLASH X="2" Y="3" VALUE="0"/>
+  <TEACHER_CLASH X="2" Y="4" VALUE="0"/>
+  <TEACHER_CLASH X="2" Y="5" VALUE="0"/>
+  <TEACHER_CLASH X="2" Y="6" VALUE="0"/>
+  <TEACHER_CLASH X="2" Y="7" VALUE="0"/>
+  <TEACHER_CLASH X="3" Y="0" VALUE="0"/>
+  <TEACHER_CLASH X="3" Y="1" VALUE="0"/>
+  <TEACHER_CLASH X="3" Y="2" VALUE="0"/>
+  <TEACHER_CLASH X="3" Y="3" VALUE="0"/>
+  <TEACHER_CLASH X="3" Y="4" VALUE="0"/>
+  <TEACHER_CLASH X="3" Y="5" VALUE="0"/>
+  <TEACHER_CLASH X="3" Y="6" VALUE="0"/>
+  <TEACHER_CLASH X="3" Y="7" VALUE="0"/>
+  <TEACHER_CLASH X="4" Y="0" VALUE="0"/>
+  <TEACHER_CLASH X="4" Y="1" VALUE="0"/>
+  <TEACHER_CLASH X="4" Y="2" VALUE="0"/>
+  <TEACHER_CLASH X="4" Y="3" VALUE="0"/>
+  <TEACHER_CLASH X="4" Y="4" VALUE="0"/>
+  <TEACHER_CLASH X="4" Y="5" VALUE="0"/>
+  <TEACHER_CLASH X="4" Y="6" VALUE="0"/>
+  <TEACHER_CLASH X="4" Y="7" VALUE="0"/>
+  <ROOM_CLASH X="0" Y="0" VALUE="0"/>
+  <ROOM_CLASH X="0" Y="1" VALUE="0"/>
+  <ROOM_CLASH X="0" Y="2" VALUE="0"/>
+  <ROOM_CLASH X="0" Y="3" VALUE="0"/>
+  <ROOM_CLASH X="0" Y="4" VALUE="0"/>
+  <ROOM_CLASH X="0" Y="5" VALUE="0"/>
+  <ROOM_CLASH X="0" Y="6" VALUE="0"/>
+  <ROOM_CLASH X="0" Y="7" VALUE="0"/>
+  <ROOM_CLASH X="1" Y="0" VALUE="0"/>
+  <ROOM_CLASH X="1" Y="1" VALUE="435"/>
+  <ROOM_CLASH X="1" Y="2" VALUE="0"/>
+  <ROOM_CLASH X="1" Y="3" VALUE="0"/>
+  <ROOM_CLASH X="1" Y="4" VALUE="0"/>
+  <ROOM_CLASH X="1" Y="5" VALUE="0"/>
+  <ROOM_CLASH X="1" Y="6" VALUE="0"/>
+  <ROOM_CLASH X="1" Y="7" VALUE="0"/>
+  <ROOM_CLASH X="2" Y="0" VALUE="0"/>
+  <ROOM_CLASH X="2" Y="1" VALUE="0"/>
+  <ROOM_CLASH X="2" Y="2" VALUE="0"/>
+  <ROOM_CLASH X="2" Y="3" VALUE="0"/>
+  <ROOM_CLASH X="2" Y="4" VALUE="0"/>
+  <ROOM_CLASH X="2" Y="5" VALUE="0"/>
+  <ROOM_CLASH X="2" Y="6" VALUE="0"/>
+  <ROOM_CLASH X="2" Y="7" VALUE="0"/>
+  <ROOM_CLASH X="3" Y="0" VALUE="0"/>
+  <ROOM_CLASH X="3" Y="1" VALUE="0"/>
+  <ROOM_CLASH X="3" Y="2" VALUE="0"/>
+  <ROOM_CLASH X="3" Y="3" VALUE="0"/>
+  <ROOM_CLASH X="3" Y="4" VALUE="0"/>
+  <ROOM_CLASH X="3" Y="5" VALUE="0"/>
+  <ROOM_CLASH X="3" Y="6" VALUE="0"/>
+  <ROOM_CLASH X="3" Y="7" VALUE="0"/>
+  <ROOM_CLASH X="4" Y="0" VALUE="0"/>
+  <ROOM_CLASH X="4" Y="1" VALUE="0"/>
+  <ROOM_CLASH X="4" Y="2" VALUE="0"/>
+  <ROOM_CLASH X="4" Y="3" VALUE="0"/>
+  <ROOM_CLASH X="4" Y="4" VALUE="0"/>
+  <ROOM_CLASH X="4" Y="5" VALUE="0"/>
+  <ROOM_CLASH X="4" Y="6" VALUE="0"/>
+  <ROOM_CLASH X="4" Y="7" VALUE="0"/>
+  <F_CLASH X="0" Y="0" VALUE="0"/>
+  <F_CLASH X="0" Y="1" VALUE="0"/>
+  <F_CLASH X="0" Y="2" VALUE="0"/>
+  <F_CLASH X="0" Y="3" VALUE="0"/>
+  <F_CLASH X="0" Y="4" VALUE="0"/>
+  <F_CLASH X="0" Y="5" VALUE="0"/>
+  <F_CLASH X="0" Y="6" VALUE="0"/>
+  <F_CLASH X="0" Y="7" VALUE="0"/>
+  <F_CLASH X="1" Y="0" VALUE="0"/>
+  <F_CLASH X="1" Y="1" VALUE="0"/>
+  <F_CLASH X="1" Y="2" VALUE="0"/>
+  <F_CLASH X="1" Y="3" VALUE="0"/>
+  <F_CLASH X="1" Y="4" VALUE="0"/>
+  <F_CLASH X="1" Y="5" VALUE="0"/>
+  <F_CLASH X="1" Y="6" VALUE="0"/>
+  <F_CLASH X="1" Y="7" VALUE="0"/>
+  <F_CLASH X="2" Y="0" VALUE="0"/>
+  <F_CLASH X="2" Y="1" VALUE="0"/>
+  <F_CLASH X="2" Y="2" VALUE="0"/>
+  <F_CLASH X="2" Y="3" VALUE="0"/>
+  <F_CLASH X="2" Y="4" VALUE="0"/>
+  <F_CLASH X="2" Y="5" VALUE="0"/>
+  <F_CLASH X="2" Y="6" VALUE="0"/>
+  <F_CLASH X="2" Y="7" VALUE="0"/>
+  <F_CLASH X="3" Y="0" VALUE="0"/>
+  <F_CLASH X="3" Y="1" VALUE="0"/>
+  <F_CLASH X="3" Y="2" VALUE="0"/>
+  <F_CLASH X="3" Y="3" VALUE="0"/>
+  <F_CLASH X="3" Y="4" VALUE="0"/>
+  <F_CLASH X="3" Y="5" VALUE="0"/>
+  <F_CLASH X="3" Y="6" VALUE="0"/>
+  <F_CLASH X="3" Y="7" VALUE="0"/>
+  <F_CLASH X="4" Y="0" VALUE="0"/>
+  <F_CLASH X="4" Y="1" VALUE="0"/>
+  <F_CLASH X="4" Y="2" VALUE="0"/>
+  <F_CLASH X="4" Y="3" VALUE="0"/>
+  <F_CLASH X="4" Y="4" VALUE="0"/>
+  <F_CLASH X="4" Y="5" VALUE="0"/>
+  <F_CLASH X="4" Y="6" VALUE="0"/>
+  <F_CLASH X="4" Y="7" VALUE="0"/>
+  <DL VALUE="4"/>
+  <PL VALUE="0"/>
+  <YL VALUE="7"/>
+  <LL VALUE="1"/>
+  <HD VALUE="0"/>
+  <HP VALUE="0"/>
+  <HY VALUE="7"/>
+  <HL VALUE="1"/>
+  <ND VALUE="4"/>
+  <NP VALUE="4"/>
+  <NY VALUE="7"/>
+  <NL VALUE="1"/>
+  <WSeWarn VALUE="255"/>
+  <WSmWarn warn="0"/>
+  <warn VALUE="255"/>
+  <arrow VALUE="3"/>
+  <box VALUE="0"/>
+</TTW_DATA>
