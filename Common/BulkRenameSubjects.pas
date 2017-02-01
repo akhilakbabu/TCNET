@@ -19,10 +19,10 @@ type
     lblReplaceWith: TLabel;
     edtReplaceText: TEdit;
     lsvBulkRenameSubjects: TListView;
-    lblShowMeTheList: TLabel;
     rgpSelectSubjects: TRadioGroup;
     chkNames: TCheckBox;
     rgpReplaceCreate: TRadioGroup;
+    btnShowSubject: TBitBtn;
     procedure DoBulkRenameSubjects(Sender: TObject);
     procedure PrepareSave(Sender: TObject);
     procedure SupressSpaceChar(Sender: TObject; var Key: Char);
@@ -296,7 +296,9 @@ begin
              (Trim(edtReplaceText.Text) <> AMG_NA_SUBJECT))
               or
               ((edtFindText.Text = ' ') and (edtReplaceText.Text = ''));
-  lblShowMeTheList.Enabled := lEnable;
+ // lblShowMeTheList.Enabled := lEnable;
+  btnShowSubject.Enabled   := lEnable;
+
 end;
 
 procedure TFrmBulkRenameSubjects.RefreshSubjectList(Sender: TObject);
