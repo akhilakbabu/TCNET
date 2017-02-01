@@ -530,8 +530,8 @@ begin
    yearCheckBox[i].hint:='Check to print '+yeartitle+' '+yearname[i-1];
    yearCheckBox[i].caption:=yearname[i-1];
    yearCheckBox[i].enabled:=true;
-   v2:=(i-1) div 3;  v1:=(i) mod 3;
-   if v1=0 then v1:=2 else v1:=v1-1;
+   v2:=(i-1) div 5;  v1:=(i) mod 5;     // 3, 3 mantis-1304
+   if v1=0 then v1:=4 else v1:=v1-1;   //2 
    yearCheckBox[i].width:=mxyearname+actcheckboxsz;
    yearCheckBox[i].left:=label3.left+v1*(mxyearname+xgap);
    yearCheckBox[i].top:=label3.top+label3.height+ygapTop+v2*(yearCheckBox[1].height+ygap);

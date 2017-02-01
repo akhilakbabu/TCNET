@@ -11,12 +11,12 @@ const
   szTTDayBlock=48100;
 
   nmbrDays=10;
-  nmbrYears=15;
+  nmbrYears=20;  //was 15 mantis-1304
   nmbrLevels=150;
   nmbrSubjects=3000;
   nmbrTeachers=400;
   nmbrRooms=400;
-  nmbrPeriods = 20;
+  nmbrPeriods = 32; //was 20 mantis-1474
   nmbrClass=2000;
   nmbrLabels=1000;
   nmbrHouse=50;
