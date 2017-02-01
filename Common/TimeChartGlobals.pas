@@ -12,7 +12,7 @@ const
   //Limitations
   DEETcasesImportExport = false;
   fgConvertClassFlag = true;
-  nmbrYears = 15;
+  nmbrYears = 20; //was 15
   nmbrSubjects = 3000;
   nmbrteachers = 400;
   nmbrRooms = 400;

@@ -241,7 +241,7 @@ object prefdlg: Tprefdlg
     Width = 507
     Height = 307
     Align = alClient
-    PageIndex = 2
+    PageIndex = 1
     TabOrder = 2
     IsControl = True
     object TPage
@@ -355,7 +355,7 @@ object prefdlg: Tprefdlg
         end
         object Label3: TLabel
           Left = 8
-          Top = 123
+          Top = 103
           Width = 79
           Height = 13
           Caption = 'Years Shown:'
@@ -406,7 +406,7 @@ object prefdlg: Tprefdlg
         end
         object Button3: TButton
           Left = 99
-          Top = 120
+          Top = 100
           Width = 45
           Height = 21
           Hint = 'Tick all years'
@@ -416,7 +416,7 @@ object prefdlg: Tprefdlg
         end
         object Button4: TButton
           Left = 157
-          Top = 120
+          Top = 100
           Width = 45
           Height = 21
           Hint = 'Clear all years'
