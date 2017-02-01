@@ -177,7 +177,7 @@ begin
   j:=i;
   if DoSkipS(Stud1.stname,XML_STUDENTS.Stud[j].StName) then continue; {check surname}
   if DoSkipS(Stud1.first,XML_STUDENTS.Stud[j].First) then continue; {check first name}
-  if DoSkipS(Stud1.Sex,XML_STUDENTS.Stud[j].Sex) then continue; {check sex}
+//  if DoSkipS(Stud1.Sex,XML_STUDENTS.Stud[j].Sex) then continue; {check sex}  //mantis-1566.
   if DoSkipS(Stud1.ID,XML_STUDENTS.Stud[j].ID) then continue; {check ID}
   if DoSkip(Stud1.TcYear+1,XML_STUDENTS.Stud[j].TcYear+1) then continue; {check year}
   if DoSkip(Stud1.tcClass,XML_STUDENTS.Stud[j].TcClass) then continue; {check class}
