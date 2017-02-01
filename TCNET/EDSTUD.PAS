@@ -218,7 +218,7 @@ begin
 
  MyStud.Sex:=uppercase(trim(combobox5.text));
  if finish.tag=1 then {change student check only not for common data}
-  if ((MyStud.Sex<>genderShort[1]{'F'}) and (MyStud.Sex<>genderShort[0]{'M'})) then
+  if ((MyStud.Sex<>genderShort[1]{'F'}) and (MyStud.Sex<>genderShort[0]{'M'}) and (MyStud.Sex<>genderShort[2]{'X'}) ) then   //---- mantis- 1566
    begin
     ComboMsg('Please check the sex, enter '+genderShort[0]+' for '+
      genderLong[0]+' or '+genderShort[1]+' for '+genderLong[1]+'.',Combobox5);
@@ -817,7 +817,7 @@ begin
  combobox2.clear; for i:=1 to housecount do combobox2.items.add(housename[i]);
  combobox3.clear; for i:=1 to codeCount[1] do combobox3.items.add(XML_TEACHERS.Tecode[codepoint[i,1],0]);
  combobox4.clear; for i:=1 to codeCount[2] do combobox4.items.add(XML_TEACHERS.Tecode[codepoint[i,2],1]);
- combobox5.clear; combobox5.items.add('M'); combobox5.items.add('F');
+ combobox5.clear; combobox5.items.add('M'); combobox5.items.add('F');   combobox5.items.add('X');  //---- mantis-1566
  combobox6.clear; for i:=1 to RollClassPoint[0] do combobox6.items.add(ClassCode[RollClassPoint[i]]);
  speedbutton1.enabled:=(StN>0);
  usingResources:=true;
@@ -1376,6 +1376,8 @@ begin
  a:=Uppercase(trim(combobox5.text));
  if a=genderShort[0]{'M'} then label3.caption:=genderLong[0]  {'Male'}
   else if a=genderShort[1]{'F'} then label3.caption:=genderLong[1]  {'Female'}
+  else if a=genderShort[2]{'X'} then label3.caption:=genderLong[2]  {'Unspecified'}     //---- mantis-1566
+
    else label3.caption:='Enter Sex';
  updateFindEnabledStatus;
 end;

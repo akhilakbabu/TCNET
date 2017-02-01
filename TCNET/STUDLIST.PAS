@@ -589,7 +589,8 @@ begin
     for i := 3 to pcnt do //check sex
     begin
      if studpiece[i]='' then continue;
-     if ((UpperCase(studpiece[i])=genderShort[0]{'M'}) or (uppercase(studpiece[i])=genderShort[1]{'F'})) then
+     if ((UpperCase(studpiece[i])=genderShort[0]{'M'}) or (uppercase(studpiece[i])=genderShort[1]{'F'})
+     or (uppercase(studpiece[i])=genderShort[2]{'X'})) then   //mantis-1566.
      begin
        faStud.sex:=UpperCase(studpiece[i]);
        studpiece[i] := '';
@@ -1930,7 +1931,7 @@ var
    begin
      if studpiece[i]='' then continue;
      if ((uppercase(studpiece[i])=genderShort[0]{'M'}) or
-        (uppercase(studpiece[i])=genderShort[1]{'F'})) then
+        (uppercase(studpiece[i])=genderShort[1]{'F'})or (uppercase(studpiece[i])=genderShort[2]{'X'})) then  //mantis-1566.
          begin
           faStud.sex:=uppercase(studpiece[i]);
           studpiece[i]:=''; break; {don't reuse}
@@ -1990,6 +1991,7 @@ var
      end;
    end; {for i}
    RemoveSubDuplicates;
+
    for i:=3 to pcnt do  {pick anything that's left as being an ID}
    begin
      if trim(studpiece[i])>'' then
@@ -1998,8 +2000,7 @@ var
        studpiece[i]:=''; break; {don't reuse}
      end;
    end; {for i}
-
-    //for i:=3 to pcnt do  {pick anything that's left as being an ID2}
+       //for i:=3 to pcnt do  {pick anything that's left as being an ID2}
     //begin
       if XML_DISPLAY.stID2 then
       begin
@@ -2082,6 +2083,7 @@ var
        if trim(XML_STUDENTS.Stud[fnm].ID)='' then XML_STUDENTS.Stud[fnm].ID:=faStud.ID;
        if XML_STUDENTS.Stud[fnm].Tutor=0 then XML_STUDENTS.Stud[fnm].Tutor:=faStud.Tutor;
        if XML_STUDENTS.Stud[fnm].Home=0 then XML_STUDENTS.Stud[fnm].Home:=faStud.Home;
+
      end
      else
      begin
@@ -2105,6 +2107,10 @@ var
 
          if (faStud.Home > 0) and (faStud.Home <> XML_STUDENTS.Stud[fnm].Home) then
            XML_STUDENTS.Stud[fnm].Home:=faStud.Home;
+         //--------------//mantis-1566..-----------------------
+          if (faStud.Sex > '') and (faStud.Sex <> XML_STUDENTS.Stud[fnm].Sex) then
+           XML_STUDENTS.Stud[fnm].Sex:=faStud.Sex;
+         //--------------//mantis-1566.-----------------------
      end;
 
      if trim(StudID2[fnm])='' then
