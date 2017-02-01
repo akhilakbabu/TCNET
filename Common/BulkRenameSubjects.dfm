@@ -50,22 +50,6 @@ object FrmBulkRenameSubjects: TFrmBulkRenameSubjects
       Height = 13
       Caption = 'Replace with'
     end
-    object lblShowMeTheList: TLabel
-      Left = 380
-      Top = 25
-      Width = 167
-      Height = 13
-      Cursor = crHandPoint
-      Caption = 'Show me the list after replacement'
-      Enabled = False
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clBlue
-      Font.Height = -11
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentFont = False
-      OnClick = DisplayListAfterReplacement
-    end
     object edtFindText: TEdit
       Left = 41
       Top = 22
@@ -99,6 +83,16 @@ object FrmBulkRenameSubjects: TFrmBulkRenameSubjects
       Caption = 'Rename Names too'
       TabOrder = 2
       OnClick = RefreshSubjectList
+    end
+    object btnShowSubject: TBitBtn
+      Left = 376
+      Top = 20
+      Width = 123
+      Height = 25
+      Caption = 'Show subjects selected'
+      Enabled = False
+      TabOrder = 3
+      OnClick = DisplayListAfterReplacement
     end
   end
   object pnlGrid: TPanel
