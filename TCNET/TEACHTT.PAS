@@ -116,7 +116,7 @@ var
  tscount:                       integer;
  ldcount:                       double;
  maxLines:             smallint;
-
+ subcount : double;
 
 Procedure GeneralListContents(i,size,myset:integer;var Contents: array of integer);
 var
@@ -268,7 +268,7 @@ end;
 procedure TTeTtable.ShowTtItems(i,d,p,x1: integer);
 var
   ro,sc,teyear,lev,offset: integer;
-  itemTt1,itemTt2,itemTt3: string;
+  itemTt1,itemTt2,itemTt3,aStr: string;
   lNoOfStud: Integer;
   lTeTimetableItem: TTeTimetableItem;
 begin
@@ -283,7 +283,20 @@ begin
   begin
     if (sc<>subNA) then
     begin
+       if SubWillcount[sc]<>'N' then     //-----------Mantis-1295
+      begin
       inc(tscount); ldcount:=ldCount+tsAllot[d,p];
+      end;
+        //-----------Mantis-1295
+
+   { if SubWillcount[i]='N' then
+    begin
+        str(TeAllot[i]:6:2,aStr);
+        subcount   := subcount+StrToFloat(aStr) ;
+        aStr :='0.00';
+    end ; }
+     //-----------Mantis-1295
+
     end;
     itemTt1:=trim(SubCode[sc]);
     itemTt2:=trim(XML_TEACHERS.tecode[ro,1]);
@@ -626,6 +639,7 @@ begin
  x:=Tabs[7]; printw('Times');
  x:=Tabs[8]; printwl('  Alloted'); newline;
  teLoadslines:=2; TeDoSub[0]:=0;
+  subcount:=0;//mantis-1295
  for yeary:=0 to years_minus_1 do
   begin
    if classInYear[yeary] then
@@ -669,7 +683,9 @@ begin
      end;
     x:=Tabs[5]-blankwidth*3; printwl('Totals ');
     PrintOffset(Teaching[i],Tabs[7]);
-    str((TeLoad[i]+ldt):6:2,tmpstr);
+ //   str((TeLoad[i]+ldt):6:2,tmpstr);            //mantis-1295
+      str((TeLoad[i]-subcount+ldt):6:2,tmpstr);  //mantis-1295
+
     x:=Tabs[9]-canvas.textwidth(tmpstr);
     printwl(tmpstr);
     printw('/'+inttostr(XML_TEACHERS.Load[i]));
@@ -712,6 +728,12 @@ begin
     if mycount>0 then PrintOffset(mycount,Tabs[6]);
     PrintOffset(a,Tabs[7]);
     str(TeAllot[j]:6:2,aStr);
+     if SubWillcount[j]='N' then   //Mantis-1295
+    begin
+        subcount   := subcount+StrToFloat(aStr) ;
+        aStr :='0.00';
+    end ;
+
     x:=Tabs[9]-self.canvas.textwidth(aStr);
     printwl(aStr);
     fcolor(cpBlockClash);
@@ -725,7 +747,7 @@ end;
 
 procedure TTeTtable.WeeklyFooter(i:integer);
 var
- a: integer;
+ a,j: integer;
  astr,bstr: string;
 begin
  if listtype=1 then {daily}
@@ -744,6 +766,7 @@ begin
       if trim(XML_TEACHERS.dutycode[i,a])>'' then
        ldcount:=ldcount+XML_TEACHERS.dutyload[i,a];
      end; {for a}
+
 
      str(ldcount:4:2,aStr);
      printw('Total time slots: '+inttostr(tscount)+'   Load: '+aStr+'/'+inttostr(XML_TEACHERS.Load[i]));

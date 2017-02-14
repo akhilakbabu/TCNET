@@ -1310,7 +1310,7 @@ end;
 procedure getSubjectCodes;
 var
  codeFile: file;
- i,NumSubNames,CodePlace: smallint;
+ i,NumSubNames,CodePlace ,nosubwillcount: smallint;  //mantis-1295
  tempstr : string;
  lAmtTransferred: Integer;
 begin
@@ -1383,6 +1383,49 @@ begin
    end;
   end
  else makefile('SUBNAME.DAT');
+
+ // --------------mantis-1295-----------------------
+
+
+
+    for i:=0 to nmbrSubjects do Subwillcount[i]:=Space(szSubWillCountMax); //1
+ Subwillcountsize:=szSubWillCountMax; nosubwillcount:=NumCodes[0];
+ if fileexists('SubWillCount.DAT') then
+  begin
+   try
+    try
+     doAssignFile(codeFile,'SubWillCount.DAT');
+     filemode:=fmOpenRead+fmShareDenyNone;
+     reset(codeFile,1);
+     SetLength(tempstr,4);
+     blockread(codeFile,tempstr[1],4);
+     if tempstr='TC4W' then
+      begin
+       blockread(codeFile,nosubwillcount,2);
+       blockread(codeFile,Subwillcountsize,2);
+      end
+     else
+      begin
+       seek(codeFile, 0);
+       blockread(codeFile,nosubwillcount,2)
+      end;
+     if nosubwillcount>NumCodes[0] then nosubwillcount:=NumCodes[0];
+     if nosubwillcount>0 then
+      for i := 1 to nosubwillcount do
+       begin
+        SetLength(Subwillcount[i],Subwillcountsize);
+        blockread(codeFile,Subwillcount[i][1],Subwillcountsize);
+        Subwillcount[i]:=trim(Subwillcount[i])
+       end;
+    finally
+     closefile(codeFile)
+    end;
+   except
+   end;
+  end
+ else makefile('SubWillCount.DAT');
+
+     // --------------mantis-1295-----------------------
 
   {load subject report codes}
  for i := 0 to nmbrSubjects do

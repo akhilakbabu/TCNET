@@ -23,6 +23,7 @@ type
     Edit3: TEdit;
     Label6: TLabel;
     Edit4: TEdit;
+    CheckBox1: TCheckBox;
     procedure AddClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormActivate(Sender: TObject);
@@ -67,6 +68,12 @@ begin
 
  Subcode[codePlace]:=codeStr;
  Subname[codePlace]:=trim(edit2.text);
+ //---- mantis-1295
+ if CheckBox1.Checked =true then
+   SubWillCount[codePlace]:='Y'
+ else
+   SubWillCount[codePlace]:='N' ;
+ //---- mantis-1295
  if NumSubRepCodes>0 then
   begin
    SubReportCode[codePlace]:=trim(edit3.text);
@@ -76,7 +83,9 @@ begin
   begin
    SubReportCode[codePlace]:=Subcode[codePlace];
    SubReportName[codePlace]:=Subname[codePlace];
+ //  SubReportWillCount[codePlace]:=SubWillCount[codePlace];
   end;
+
  link[codePlace]:=0;
  {update font widths if necessary}
  tmpint:=mainform.canvas.textwidth(codestr);
@@ -97,6 +106,7 @@ begin
  AlterTimeFlag:=True;  AlterWSflag:=true;
  UpdateTimeTableWins;
  restore;
+
 end;
 
 
