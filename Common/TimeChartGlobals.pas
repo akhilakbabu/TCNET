@@ -12,7 +12,7 @@ const
   //Limitations
   DEETcasesImportExport = false;
   fgConvertClassFlag = true;
-  nmbrYears = 20; //was 15
+  nmbrYears = 20;    //was 15
   nmbrSubjects = 3000;
   nmbrteachers = 400;
   nmbrRooms = 400;
@@ -65,6 +65,7 @@ const
   szSubCode = 10;
   szSubnameDefault = 25;
   szSubnameMax = 50;
+  szSubWillCountMax =1; //mantis-1295
   szTeCode = 8;
   szTeName = 25;
   szDayName = 15;
@@ -307,20 +308,7 @@ type
   end;
 
 type
-  tpStudRec = record
-    stname: string[szStName];
-    first: string[szStName];
-    Choices: array [0..nmbrchoices] of smallint;
-    Sex: string[1];
-    ID: string[szID];
-    tcClass: smallint;
-    TcYear: smallint; {new 5.0}
-    House: smallint;
-    tutor: smallint;
-    home: smallint;
-    TcTag: word;
-    strRecord: smallint;
-  end;
+  
 
   tpTrackData=record
    subs: array[1..nmbrTrackSems,0..nmbrchoices] of smallint;
@@ -349,9 +337,6 @@ var
 
 
   passcount: array[0..10] of smallint;
-
-  genderShort: array[0..1] of string[1]=('M','F');
-  genderLong: array[0..1] of string=('Male','Female');  
 
   usrPassTime:            string[8];
   usrPassDate:            string[8];
@@ -666,7 +651,6 @@ var
   GOSname: array of string;
   GOSmenu: array [0..nmbrCustomGroupMenus] of smallint;
   sortChangeFlag: wordbool;
-  NumStud: smallint;
   chmax: smallint;
   boxwidth,prntBoxWidth:              smallint;
   YearStat: array [0..nmbrYears] of record
@@ -679,7 +663,7 @@ var
     femalenum: smallint;
   end;
   { - - - -  DYNAMIC STUDENT DATA - - - - }
-  Stud: array of tpStudRec;
+  
   MySelStud: integer; {selected student in top student list window}
   {group data}
   GroupName: string[szTagname];
@@ -778,6 +762,9 @@ var
   snsize: smallint;
   subNA: smallint; {Not Available code}
   excludeNA: boolean=false;
+  Subwillcountsize : smallint;
+  SubWillCount : array [0..nmbrSubjects] of String[szSubWillCountMax]; //mantis-1295
+//  SubReportWillCount: array [0..nmbrSubjects] of String[szSubWillCountMax]; //mantis-1295
   {custom data}
   Add:  tpAdd; {80 add$(30)}
   customTab: array [0..nmbrCustom] of smallint; {tab(30)}
@@ -788,15 +775,6 @@ var
   backup_action,fillRoom_action: smallint; {1=backup, 2=restore}
   backupPath: array[1..nmbrBackupDisks] of string;
   {teacher/room data}
-  tecode: array [0..nmbrteachers, 0..1] of String[szTeCode];
-  {0- teachers ;  1-rooms ;  }
-  tename: array [0..nmbrteachers, 0..1] of String[szTeName];
-  Load:  tpTeData;
-  Tfaculty:  array [0..nmbrteachers, 1..nmbrTeFacs] of smallint;
-  RoSize:  tpTeData;
-  Rfaculty:  array [0..nmbrteachers, 1..3] of smallint;
-  DutyLoad: array [0..nmbrteachers, 0..2] of double;
-  DutyCode: array [0..nmbrteachers, 0..2] of String[szDutyCode];
   {faculty data}
   facCount: array [0..nmbrFaculty] of smallint; {fa(30)}
   facName: array [0..nmbrFaculty] of string[szFacName]; {fa$(30)}

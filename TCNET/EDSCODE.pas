@@ -29,6 +29,7 @@ type
     Edit5: TEdit;
     cboSubject: TComboBox;
     lblSelectSubject: TLabel;
+    CheckBox1: TCheckBox;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure UpdateSubject(Sender: TObject);
     procedure FormActivate(Sender: TObject);
@@ -63,6 +64,11 @@ begin
  edit2.text:=Subname[MySu];
  edit4.Text:=SubReportCode[MySu];
  edit5.Text:=SubReportName[MySu];
+ if Trim(SubWillCount[MySu])='Y' then  //---- mantis-1295
+  CheckBox1.Checked :=True
+ else
+  CheckBox1.Checked :=False ;
+//  CheckBox1.Caption :=  SubWillCount[MySu];
 end;
 
 procedure Tedscodedlg.RefreshSubjectList;
@@ -146,6 +152,7 @@ var
  codeStrNEW:    string;
  tmpStr:        string;
  tmpint:        integer;
+ tmpSubwillcount: string;  //---- mantis-1295
 begin
  if NoCode(codeStr,edit1) then exit;
  if CodeNotFound(mySu,0,edit1) then exit;
@@ -166,6 +173,12 @@ begin
  SubCode[MySu]:=codeStrNEW;   {update new vals.}
  tmpStr:=TrimRight(edit2.text);
  Subname[MySu]:=tmpStr;
+ //------------ mantis-1295-------------
+If  Checkbox1.Checked   then
+ tmpSubwillcount := 'Y'
+else
+  tmpSubwillcount := 'N' ;
+
  if NumSubRepCodes>0 then
   begin
    SubReportCode[MySu]:=trim(edit4.text);
@@ -175,7 +188,15 @@ begin
   begin
    SubReportCode[MySu]:=Subcode[MySu];
    SubReportName[MySu]:=Subname[MySu];
+//   SubReportName[MySu]:=Subname[MySu];
   end;
+
+ //---- mantis-1295
+ if CheckBox1.Checked =true then
+   SubWillCount[MySu]:='Y'
+ else
+   SubWillCount[MySu]:='N' ;
+
 
  needUpdate:=true;
  sortCodes(0);
@@ -196,7 +217,7 @@ begin
  UpdateAllWins;
  Restore;
 
-  if needUpdate then
+   if needUpdate then
   begin
     updatesub(0); {update subject data files}
     GetSubjectCodes;
@@ -224,6 +245,8 @@ begin
   //ShowSub;
   cboSubject.iTemIndex := cboSubject.Items.IndexOf(Edit1.Text);
   cboSubject.OnChange(Self);
+  if Subwillcount[MySu]='Y' then
+   CheckBox1.Checked := True;
  end
  else restore;
  //edit1.setfocus;

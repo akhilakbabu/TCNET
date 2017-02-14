@@ -31,6 +31,7 @@ type
 var
   TeacherTimes: TTeacherTimes;
 
+   
 procedure TeacherTimesPrint;
 procedure TeacherTimestext;
 
@@ -66,7 +67,7 @@ var
  TeCount,TeSub,teline:          tpTeData;
  maxx1c:            longint;
  lcnt:              integer;
-
+ subcount : double;
 
 
 procedure calcvertrange_teacherperiod;
@@ -255,7 +256,10 @@ var
  j,a:   integer;
  aStr:          string;
  mycount,YearUse: integer;
+
 begin
+  // subcount:=0;
+   
  if winView[wnTeTimes]=1 then
  begin
   for j:=1 to numcodes[0] do
@@ -275,6 +279,13 @@ begin
     if mycount>0 then PrintOffset(mycount,Tabs[6]);
     PrintOffset(a,Tabs[7]);
     str(TeAllot[j]:6:2,aStr);
+
+    if SubWillcount[j]='N' then   //Mantis-1295
+    begin
+        subcount   := subcount+StrToFloat(aStr) ;
+        aStr :='0.00';
+    end ;
+
     x:=Tabs[9]-self.canvas.textwidth(aStr);
     printwl(aStr);
     fcolor(cpBlockClash);
@@ -310,6 +321,15 @@ begin
      printwl(SubCode[j]);
      fcolor(cpNormal);
      printwl(' '+inttostr(a)+'   '); inc(count1);
+
+     //-----------Mantis-1295
+     str(TeAllot[j]:6:2,aStr);
+    if SubWillcount[j]='N' then
+    begin
+        subcount   := subcount+StrToFloat(aStr) ;
+        aStr :='0.00';
+    end ;
+     //-----------Mantis-1295
     end; {if a>0}
    end; {for j}
  end;
@@ -385,6 +405,7 @@ begin
    i:=pfree[k];
    if (i=0) then continue;
    begin
+   subcount:=0;//mantis-190
    TeDoSub[0]:=0;
    fcolor(cpTeach);
    printwl(XML_TEACHERS.tecode[i,0]+'  ');
@@ -406,8 +427,10 @@ begin
      else {not classInYear[yeary]}
       begin
        ClearTeDoSub;
+
        for l:=1 to level[yeary] do tcount(yeary,i,l);
        printteachtimes(yeary,count1);
+
       end;
     end; {for yeary}
    if winView[wnTeTimes]=2 then newline;
@@ -466,7 +489,9 @@ begin
      if count1<>0 then newline;
      x:=Tabs[1];
      printwl('Total time slots '+inttostr(Teaching[i])+'  Load: ');
-     str((TeLoad[i]+ldt):6:2,tmpstr);
+    // str((TeLoad[i]+ldt):6:2,tmpstr);
+       str((TeLoad[i]-subcount+ldt):6:2,tmpstr);  //mantis-1295
+
      printwl(tmpstr+'/'+inttostr(XML_TEACHERS.Load[i]));
      if shared>1 then tmpstr:='classes' else tmpstr:='class';
      if shared>0 then
@@ -488,8 +513,20 @@ begin
        end;
       x:=Tabs[5]-blankwidth*3;
       printwl('Totals ');
+
+    //  ShowMessage(Floattostr(TeLoad[i]))  ;  //mantis-1295
       PrintOffset(Teaching[i],Tabs[7]);
-      str((TeLoad[i]+ldt):6:2,tmpstr);
+
+
+    //  TeLoad[i] :=TeLoad[i]-subcount;
+
+      str((TeLoad[i]-subcount+ldt):6:2,tmpstr);
+
+
+
+     // str((TeLoad[i]-subcount):6:2,tmpstr);  //mantis-1295
+
+
       x:=Tabs[9]-canvas.textwidth(tmpstr);
       printwl(tmpstr);
       printw('/'+inttostr(XML_TEACHERS.Load[i]));

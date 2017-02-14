@@ -16,7 +16,8 @@ uses WinTypes, WinProcs, Classes, Graphics, Forms, Controls, StdCtrls,
   procedure InsertCode(code,place:integer);
   function FNsub(A9,code9: smallint):string;
   function FNsubname(A9,code9: smallint):string;
-  
+  function FNsubwillcount(A9,code9: smallint):string; // mantis-1295
+
   function checkCode(code: smallint; var codeStr: string): smallint;
   procedure validateCode(code: smallint; var codeStr: string);
   function checkCode2(var codeStr: string): smallint;
@@ -1177,7 +1178,7 @@ end;
 procedure InsertCode(code,place:integer);
 var
  i,pos: integer;
- tmpStr1: string;
+ tmpStr1,tmpStr2: string;  //tmpStr2  mantis-1295
 begin
  pos:=codeCount[code]+1;
  case XML_DISPLAY.sorttype[code] of
@@ -1198,6 +1199,8 @@ begin
      if tmpStr1<uppercase(FNsubname(codepoint[i,code],code)) then
       begin pos:=i; break; end;
      end;
+
+
  end; {case}
  if pos<=codeCount[code] then
   for i:= codeCount[code] downto pos do
@@ -1334,10 +1337,11 @@ end;
 procedure updatesub(code: smallint);
 var
 codefile:               file;
-file1,file2:            string;
+file1,file2,file3  :          string;      //file3 // mantis-1295
 i,j,v,datasection:                  smallint;
 sub2:                   string;
 name2:                  string;
+subwillcount2:            string;     //// mantis-1295
 tmpStr:                 string;
 begin
  if usrPassLevel=utGen then exit;
@@ -1346,7 +1350,7 @@ begin
  case code of
   0:begin
      needClashMatrixRecalc:=true; datasection:=6;
-     file1:='SUBCODE.DAT';  file2:='SUBNAME.DAT';
+     file1:='SUBCODE.DAT';  file2:='SUBNAME.DAT'; file3:='SubWillCount.DAT' ;
     end;
   1:begin
      file1:='TECODE.DAT';  file2:='TENAME.DAT'; datasection:=1;
@@ -1405,6 +1409,44 @@ begin
   end;
  except
  end;
+ //----------------------// mantis-1295-------------------------------------
+
+
+ try
+  try
+   doAssignFile(codefile,file3);
+   rewrite(codefile,1);
+   if (code=0) and (Subwillcountsize<>szSubWillCountMax) then
+    begin
+     tmpstr:='TC4W';
+     blockwrite(codefile,tmpstr[1],4);
+     blockwrite(codefile,NumCodes[code],2);
+     blockwrite(codefile,Subwillcountsize,2);
+    end
+   else blockwrite(codefile,NumCodes[code],2);
+   if NumCodes[code]>0 then
+    for i:=1 to NumCodes[code] do
+    begin
+     if code=0 then
+     begin
+      if (Subwillcount[i] ='  ' ) or (Subwillcount[i] ='') then
+         Subwillcount[i] :='Y'
+      else
+      Subwillcount2:=RPadString(Subwillcount[i],Subwillcountsize);
+
+      blockwrite(codefile,Subwillcount2[1],Subwillcountsize);
+     end ;
+
+    end;
+  finally
+   closefile(codefile);
+  end;
+ except
+ end;
+
+ // ---------------------------// mantis-1295--------------------------------
+ 
+
  if code=0 then UpdateSubReportFile;
  if code=2 then
  begin
@@ -2774,8 +2816,24 @@ end;
 
 function FNsubname(A9,code9: smallint):string;
 begin
- if code9=0 then FNsubname:=Subname[A9] else FNsubname:=XML_TEACHERS.TeName[A9,code9-1];
+ if code9=0 then
+  FNsubname:=Subname[A9]
+ else
+  FNsubname:=XML_TEACHERS.TeName[A9,code9-1];
 end;
+
+//---------// mantis-1295-----------------
+function FNsubwillcount(A9,code9: smallint):string;
+begin
+ if code9=0 then
+    if trim(subwillcount[A9])='' then
+        FNsubwillcount:= 'Y'
+    else
+        FNsubwillcount:=subwillcount[A9]
+ else
+  FNsubwillcount:='Y';
+end;
+
 
 procedure swapint(var a:smallint; var b: smallint);
 var

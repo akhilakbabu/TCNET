@@ -40,18 +40,18 @@ uses
 {$R *.DFM}
 
 const
- CodeNumToCopy = 20;
+ CodeNumToCopy = 21;   //20 ---- mantis-1295
  TtFileNumToCopy=5;
  CodeFilesToCopy: array[1..CodeNumToCopy] of string=('SUBCODE.DAT','SUBNAME.DAT',
     'TECODE.DAT','TENAME.DAT','TELOAD.DAT','ROOMS.DAT','ROOMNAME.DAT',
     'ROLOAD.DAT','GROUP.DAT','FACULTY.DAT','HOUSE.DAT','ALLOT.DAT',
     'CLASS.DAT','SUBREP.DAT','TTInUse.DAT','TAG.DAT', 'STHEALTH.DAT',
-    'HLTHISSU.DAT','CLASSSUB.DAT','STUDTAG.DAT');
+    'HLTHISSU.DAT','CLASSSUB.DAT','STUDTAG.DAT','SubWillCount.DAT'); //---- mantis-1295
  CodeCopyDesc: array[1..CodeNumToCopy] of string=('Subject Codes','Subject Names',
     'Teacher Codes','Teacher Names','Teacher Loads','Room Codes','Room Names',
     'Room Details','Student Groups','Faculties','Houses','Time Allotments',
     'Roll Classes','Subject Report Codes','Timetable in use','Tag codes & names', 'Student Health',
-    'Health Conditions','Class Subjects','Tags Details');
+    'Health Conditions','Class Subjects','Tags Details','Sub Will Count');
  NumOfExt=4;
  ExtToCopy: array[1..NumOfExt] of string=('BLK','CUS','SBO','TCD');
  ExtDesc: array[1..NumOfExt] of string=('Block file','Custom file',
