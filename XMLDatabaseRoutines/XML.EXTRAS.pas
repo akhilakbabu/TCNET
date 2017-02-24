@@ -90,7 +90,8 @@ begin
           inc(_ChangesIdx);
        end;
        if _Node.NodeName ='NOTE' then  begin
-          ExNote[i] :=  _Node.GetAttribute('text');
+         // ExNote[i] :=  _Node.GetAttribute('text');     //commented   mantis-01611
+          ExNote[_NoteIdx ]  :=  _Node.GetAttribute('text'); //mantis-01611
           inc(_NoteIdx);
        end;
     end;
