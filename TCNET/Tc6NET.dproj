@@ -1,35 +1,217 @@
-﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <ProjectGuid>{6700134d-dbb1-428f-8904-583192c6e028}</ProjectGuid>
+    <ProjectGuid>{e3d9cfb1-10aa-4d7e-9f7d-5ef21d69a74a}</ProjectGuid>
     <MainSource>Tc6NET.dpr</MainSource>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
     <DCC_DependencyCheckOutputName>Tc6NET.exe</DCC_DependencyCheckOutputName>
+    <DCC_UsePackage>vcl;rtl;vclx;vclactnband;dbrtl;vcldb;vcldbx;bdertl;dsnap;dsnapcon;teeUI;teedb;tee;adortl;vclib;ibxpress;dbxcds;dbexpress;DbxCommonDriver;IndyCore;IndySystem;IndyProtocols;xmlrtl;inet;IntrawebDB_90_100;Intraweb_90_100;VclSmp;vclie;websnap;webdsnap;inetdbbde;inetdbxpress;soaprtl;Rave75VCL</DCC_UsePackage>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <Version>7.0</Version>
-    <DCC_DebugInformation>False</DCC_DebugInformation>
-    <DCC_LocalDebugSymbols>False</DCC_LocalDebugSymbols>
+    <DCC_IntegerOverflowCheck>True</DCC_IntegerOverflowCheck>
+    <DCC_PentiumSafeDivide>True</DCC_PentiumSafeDivide>
+    <DCC_GenerateStackFrames>True</DCC_GenerateStackFrames>
     <DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
     <DCC_Define>RELEASE</DCC_Define>
+    <DCC_UnitSearchPath>D:\AMIG\Components\EHS;D:\AMIG\Source\Common;D:\AMIG\Components\NiceGrid;D:\AMIG\Components\Abbrevia\Source;C:\Program Files (x86)\CodeGear\RAD Studio\5.0\RBuilder\Lib;C:\Program Files (x86)\CodeGear\RAD Studio\5.0\RBuilder\Source;D:\amig\Components\OXML</DCC_UnitSearchPath>
+    <DCC_ResourcePath>D:\AMIG\Components\EHS;D:\AMIG\Source\Common;D:\AMIG\Components\NiceGrid;D:\AMIG\Components\Abbrevia\Source;C:\Program Files (x86)\CodeGear\RAD Studio\5.0\RBuilder\Lib;C:\Program Files (x86)\CodeGear\RAD Studio\5.0\RBuilder\Source;D:\amig\Components\OXML</DCC_ResourcePath>
+    <DCC_ObjPath>D:\AMIG\Components\EHS;D:\AMIG\Source\Common;D:\AMIG\Components\NiceGrid;D:\AMIG\Components\Abbrevia\Source;C:\Program Files (x86)\CodeGear\RAD Studio\5.0\RBuilder\Lib;C:\Program Files (x86)\CodeGear\RAD Studio\5.0\RBuilder\Source;D:\amig\Components\OXML</DCC_ObjPath>
+    <DCC_IncludePath>D:\AMIG\Components\EHS;D:\AMIG\Source\Common;D:\AMIG\Components\NiceGrid;D:\AMIG\Components\Abbrevia\Source;C:\Program Files (x86)\CodeGear\RAD Studio\5.0\RBuilder\Lib;C:\Program Files (x86)\CodeGear\RAD Studio\5.0\RBuilder\Source;D:\amig\Components\OXML</DCC_IncludePath>
+    <DCC_RangeChecking>True</DCC_RangeChecking>
+    <DCC_AssertionsAtRuntime>False</DCC_AssertionsAtRuntime>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <Version>7.0</Version>
-    <DCC_Define>DEBUG</DCC_Define>
-    <DCC_DcuOutput>E:\3rdParty\DOC\TCNET</DCC_DcuOutput>
-    <DCC_ObjOutput>E:\3rdParty\DOC\TCNET</DCC_ObjOutput>
-    <DCC_HppOutput>E:\3rdParty\DOC\TCNET</DCC_HppOutput>
-    <DCC_UnitSearchPath>E:\3rdParty\Components-master\EHS;E:\3rdParty\Components-master\Common;E:\3rdParty\Components-master\Abbrevia\Source;E:\3rdParty\Components-master\NiceGrid;E:\3rdParty\Components-master\TMSCommon;E:\3rdParty\Components-master\RBuilder\Lib;E:\3rdParty\Components-master\RBuilder\Source;E:\3rdParty\Components-master\OXML</DCC_UnitSearchPath>
-    <DCC_ResourcePath>E:\3rdParty\Components-master\EHS;E:\3rdParty\Components-master\Common;E:\3rdParty\Components-master\Abbrevia\Source;E:\3rdParty\Components-master\NiceGrid;E:\3rdParty\Components-master\TMSCommon;E:\3rdParty\Components-master\RBuilder\Lib;E:\3rdParty\Components-master\RBuilder\Source;E:\3rdParty\Components-master\OXML</DCC_ResourcePath>
-    <DCC_ObjPath>E:\3rdParty\Components-master\EHS;E:\3rdParty\Components-master\Common;E:\3rdParty\Components-master\Abbrevia\Source;E:\3rdParty\Components-master\NiceGrid;E:\3rdParty\Components-master\TMSCommon;E:\3rdParty\Components-master\RBuilder\Lib;E:\3rdParty\Components-master\RBuilder\Source;E:\3rdParty\Components-master\OXML</DCC_ObjPath>
-    <DCC_IncludePath>E:\3rdParty\Components-master\EHS;E:\3rdParty\Components-master\Common;E:\3rdParty\Components-master\Abbrevia\Source;E:\3rdParty\Components-master\NiceGrid;E:\3rdParty\Components-master\TMSCommon;E:\3rdParty\Components-master\RBuilder\Lib;E:\3rdParty\Components-master\RBuilder\Source;E:\3rdParty\Components-master\OXML</DCC_IncludePath>
+    <DCC_Define>RELEASE</DCC_Define>
+    <DCC_UnitSearchPath>D:\AMIG\Components\EHS;D:\AMIG\Source\Common;D:\AMIG\Components\Abbrevia\Source;D:\AMIG\Components\NiceGrid;D:\AMIG\Components\TMSCommon;C:\Program Files (x86)\CodeGear\RAD Studio\5.0\RBuilder\Lib;C:\Program Files (x86)\CodeGear\RAD Studio\5.0\RBuilder\Source;D:\amig\Components\OXML;E:\3rdParty\Components-master\EHS;E:\3rdParty\Components-master\Common;E:\3rdParty\Components-master\Abbrevia\Source;E:\3rdParty\Components-master\NiceGrid;E:\3rdParty\Components-master\TMSCommon;E:\3rdParty\Components-master\RBuilder\Lib;E:\3rdParty\Components-master\RBuilder\Source;E:\3rdParty\Components-master\OXML</DCC_UnitSearchPath>
+    <DCC_ResourcePath>D:\AMIG\Components\EHS;D:\AMIG\Source\Common;D:\AMIG\Components\Abbrevia\Source;D:\AMIG\Components\NiceGrid;D:\AMIG\Components\TMSCommon;C:\Program Files (x86)\CodeGear\RAD Studio\5.0\RBuilder\Lib;C:\Program Files (x86)\CodeGear\RAD Studio\5.0\RBuilder\Source;D:\amig\Components\OXML;E:\3rdParty\Components-master\EHS;E:\3rdParty\Components-master\Common;E:\3rdParty\Components-master\Abbrevia\Source;E:\3rdParty\Components-master\NiceGrid;E:\3rdParty\Components-master\TMSCommon;E:\3rdParty\Components-master\RBuilder\Lib;E:\3rdParty\Components-master\RBuilder\Source;E:\3rdParty\Components-master\OXML</DCC_ResourcePath>
+    <DCC_ObjPath>D:\AMIG\Components\EHS;D:\AMIG\Source\Common;D:\AMIG\Components\Abbrevia\Source;D:\AMIG\Components\NiceGrid;D:\AMIG\Components\TMSCommon;C:\Program Files (x86)\CodeGear\RAD Studio\5.0\RBuilder\Lib;C:\Program Files (x86)\CodeGear\RAD Studio\5.0\RBuilder\Source;D:\amig\Components\OXML;E:\3rdParty\Components-master\EHS;E:\3rdParty\Components-master\Common;E:\3rdParty\Components-master\Abbrevia\Source;E:\3rdParty\Components-master\NiceGrid;E:\3rdParty\Components-master\TMSCommon;E:\3rdParty\Components-master\RBuilder\Lib;E:\3rdParty\Components-master\RBuilder\Source;E:\3rdParty\Components-master\OXML</DCC_ObjPath>
+    <DCC_IncludePath>D:\AMIG\Components\EHS;D:\AMIG\Source\Common;D:\AMIG\Components\Abbrevia\Source;D:\AMIG\Components\NiceGrid;D:\AMIG\Components\TMSCommon;C:\Program Files (x86)\CodeGear\RAD Studio\5.0\RBuilder\Lib;C:\Program Files (x86)\CodeGear\RAD Studio\5.0\RBuilder\Source;D:\amig\Components\OXML;E:\3rdParty\Components-master\EHS;E:\3rdParty\Components-master\Common;E:\3rdParty\Components-master\Abbrevia\Source;E:\3rdParty\Components-master\NiceGrid;E:\3rdParty\Components-master\TMSCommon;E:\3rdParty\Components-master\RBuilder\Lib;E:\3rdParty\Components-master\RBuilder\Source;E:\3rdParty\Components-master\OXML</DCC_IncludePath>
+    <DCC_DcuOutput>E:\Delphi project\DOC\TCNET</DCC_DcuOutput>
+    <DCC_ObjOutput>E:\Delphi project\DOC\TCNET</DCC_ObjOutput>
+    <DCC_HppOutput>E:\Delphi project\DOC\TCNET</DCC_HppOutput>
+    <DCC_SymbolReferenceInfo>2</DCC_SymbolReferenceInfo>
+    <DCC_WriteableConstants>True</DCC_WriteableConstants>
+    <DCC_IntegerOverflowCheck>True</DCC_IntegerOverflowCheck>
+    <DCC_RangeChecking>True</DCC_RangeChecking>
+    <DCC_PentiumSafeDivide>True</DCC_PentiumSafeDivide>
+    <DCC_GenerateStackFrames>True</DCC_GenerateStackFrames>
+    <DCC_Optimize>False</DCC_Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Trial|AnyCPU' ">
+    <Version>7.0</Version>
+    <DCC_AssertionsAtRuntime>False</DCC_AssertionsAtRuntime>
+    <DCC_DebugInformation>False</DCC_DebugInformation>
+    <DCC_LocalDebugSymbols>False</DCC_LocalDebugSymbols>
+    <DCC_IntegerOverflowCheck>True</DCC_IntegerOverflowCheck>
+    <DCC_RangeChecking>True</DCC_RangeChecking>
+    <DCC_PentiumSafeDivide>True</DCC_PentiumSafeDivide>
+    <DCC_GenerateStackFrames>True</DCC_GenerateStackFrames>
+    <DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+    <DCC_UnitSearchPath>D:\AMIG\Components\EHS;D:\AMIG\Source\Common;D:\AMIG\Components\NiceGrid;D:\AMIG\Components\Abbrevia\Source;C:\Program Files (x86)\CodeGear\RAD Studio\5.0\RBuilder\Lib;C:\Program Files (x86)\CodeGear\RAD Studio\5.0\RBuilder\Source</DCC_UnitSearchPath>
+    <DCC_ResourcePath>D:\AMIG\Components\EHS;D:\AMIG\Source\Common;D:\AMIG\Components\NiceGrid;D:\AMIG\Components\Abbrevia\Source;C:\Program Files (x86)\CodeGear\RAD Studio\5.0\RBuilder\Lib;C:\Program Files (x86)\CodeGear\RAD Studio\5.0\RBuilder\Source</DCC_ResourcePath>
+    <DCC_ObjPath>D:\AMIG\Components\EHS;D:\AMIG\Source\Common;D:\AMIG\Components\NiceGrid;D:\AMIG\Components\Abbrevia\Source;C:\Program Files (x86)\CodeGear\RAD Studio\5.0\RBuilder\Lib;C:\Program Files (x86)\CodeGear\RAD Studio\5.0\RBuilder\Source</DCC_ObjPath>
+    <DCC_IncludePath>D:\AMIG\Components\EHS;D:\AMIG\Source\Common;D:\AMIG\Components\NiceGrid;D:\AMIG\Components\Abbrevia\Source;C:\Program Files (x86)\CodeGear\RAD Studio\5.0\RBuilder\Lib;C:\Program Files (x86)\CodeGear\RAD Studio\5.0\RBuilder\Source</DCC_IncludePath>
+    <DCC_Define>TRIAL</DCC_Define>
+    <DCC_ExeOutput>Trial</DCC_ExeOutput>
+    <DCC_Description>Trial Version</DCC_Description>
   </PropertyGroup>
   <ProjectExtensions>
     <Borland.Personality>Delphi.Personality</Borland.Personality>
     <Borland.ProjectType>VCLApplication</Borland.ProjectType>
     <BorlandProject>
-<BorlandProject><Delphi.Personality><Parameters><Parameters Name="UseLauncher">False</Parameters><Parameters Name="LoadAllSymbols">True</Parameters><Parameters Name="LoadUnspecifiedSymbols">False</Parameters></Parameters><VersionInfo><VersionInfo Name="IncludeVerInfo">False</VersionInfo><VersionInfo Name="AutoIncBuild">False</VersionInfo><VersionInfo Name="MajorVer">1</VersionInfo><VersionInfo Name="MinorVer">0</VersionInfo><VersionInfo Name="Release">0</VersionInfo><VersionInfo Name="Build">0</VersionInfo><VersionInfo Name="Debug">False</VersionInfo><VersionInfo Name="PreRelease">False</VersionInfo><VersionInfo Name="Special">False</VersionInfo><VersionInfo Name="Private">False</VersionInfo><VersionInfo Name="DLL">False</VersionInfo><VersionInfo Name="Locale">1033</VersionInfo><VersionInfo Name="CodePage">1252</VersionInfo></VersionInfo><VersionInfoKeys><VersionInfoKeys Name="CompanyName"></VersionInfoKeys><VersionInfoKeys Name="FileDescription"></VersionInfoKeys><VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys><VersionInfoKeys Name="InternalName"></VersionInfoKeys><VersionInfoKeys Name="LegalCopyright"></VersionInfoKeys><VersionInfoKeys Name="LegalTrademarks"></VersionInfoKeys><VersionInfoKeys Name="OriginalFilename"></VersionInfoKeys><VersionInfoKeys Name="ProductName"></VersionInfoKeys><VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys><VersionInfoKeys Name="Comments"></VersionInfoKeys></VersionInfoKeys><Excluded_Packages>
+<BorlandProject><Delphi.Personality><Parameters><Parameters Name="UseLauncher">False</Parameters><Parameters Name="LoadAllSymbols">True</Parameters><Parameters Name="LoadUnspecifiedSymbols">False</Parameters><Parameters Name="DebugSourceDirs">C:\AMIG\Components\TMSCommon\</Parameters><Parameters Name="RunParams">/DevMode</Parameters></Parameters><VersionInfo><VersionInfo Name="IncludeVerInfo">True</VersionInfo><VersionInfo Name="AutoIncBuild">False</VersionInfo><VersionInfo Name="MajorVer">6</VersionInfo><VersionInfo Name="MinorVer">5</VersionInfo><VersionInfo Name="Release">0</VersionInfo><VersionInfo Name="Build">14</VersionInfo><VersionInfo Name="Debug">False</VersionInfo><VersionInfo Name="PreRelease">False</VersionInfo><VersionInfo Name="Special">False</VersionInfo><VersionInfo Name="Private">False</VersionInfo><VersionInfo Name="DLL">False</VersionInfo><VersionInfo Name="Locale">3081</VersionInfo><VersionInfo Name="CodePage">1252</VersionInfo></VersionInfo><VersionInfoKeys><VersionInfoKeys Name="CompanyName">AMIG SYSTEMS</VersionInfoKeys><VersionInfoKeys Name="FileDescription">School Timetabling software</VersionInfoKeys><VersionInfoKeys Name="FileVersion">6.5.0.14</VersionInfoKeys><VersionInfoKeys Name="InternalName">TC6NET.exe</VersionInfoKeys><VersionInfoKeys Name="LegalCopyright"></VersionInfoKeys><VersionInfoKeys Name="LegalTrademarks"></VersionInfoKeys><VersionInfoKeys Name="OriginalFilename">TC6NET.exe</VersionInfoKeys><VersionInfoKeys Name="ProductName">NETWORK TIME CHART</VersionInfoKeys><VersionInfoKeys Name="ProductVersion">6.5</VersionInfoKeys><VersionInfoKeys Name="Comments">School Timetabling software</VersionInfoKeys></VersionInfoKeys><Source><Source Name="MainSource">Tc6NET.dpr</Source></Source><Excluded_Packages>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       
       
       
@@ -42,9 +224,12 @@
       
       <Excluded_Packages Name="$(BDS)\bin\dcloffice2k100.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
       <Excluded_Packages Name="$(BDS)\bin\dclofficexp100.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
-    </Excluded_Packages><Source><Source Name="MainSource">Tc6NET.dpr</Source></Source></Delphi.Personality></BorlandProject></BorlandProject>
+    </Excluded_Packages></Delphi.Personality><ModelSupport>False</ModelSupport></BorlandProject></BorlandProject>
   </ProjectExtensions>
   <Import Project="$(MSBuildBinPath)\Borland.Delphi.Targets" />
+  <PropertyGroup>
+    <PreBuildEvent>SetUpdateDate</PreBuildEvent>
+  </PropertyGroup>
   <ItemGroup>
     <DelphiCompile Include="Tc6NET.dpr">
       <MainSource>MainSource</MainSource>
@@ -249,82 +434,6 @@
       <Form>DM</Form>
       <DesignClass>TDataModule</DesignClass>
     </DCCReference>
-    <DCCReference Include="E:\Common\BlockTeachers.pas">
-      <Form>FrmBlockTeachers</Form>
-    </DCCReference>
-    <DCCReference Include="E:\Common\BulkRenameSubjects.pas">
-      <Form>FrmBulkRenameSubjects</Form>
-    </DCCReference>
-    <DCCReference Include="E:\Common\CASES21ExportDataView.pas">
-      <Form>FrmCASES21ExportDataView</Form>
-    </DCCReference>
-    <DCCReference Include="E:\Common\CASES21ImportOptions.pas">
-      <Form>FrmCASES21ImportOptions</Form>
-    </DCCReference>
-    <DCCReference Include="E:\Common\CreateHealthCondition.pas">
-      <Form>FrmAddHealthCondition</Form>
-    </DCCReference>
-    <DCCReference Include="E:\Common\DCPrijndael.pas" />
-    <DCCReference Include="E:\Common\DCPsha1.pas" />
-    <DCCReference Include="E:\Common\DCPsha256.pas" />
-    <DCCReference Include="E:\Common\EditHealthCondition.pas">
-      <Form>FrmEditHealthCondition</Form>
-    </DCCReference>
-    <DCCReference Include="E:\Common\EditTag.pas">
-      <Form>FrmEditTag</Form>
-    </DCCReference>
-    <DCCReference Include="E:\Common\ExportToCASES21.pas" />
-    <DCCReference Include="E:\Common\ExportToTASS.pas">
-      <Form>FrmExportTASS</Form>
-    </DCCReference>
-    <DCCReference Include="E:\Common\GlobalToTcAndTcextra.pas" />
-    <DCCReference Include="E:\Common\HealthCondition.pas">
-      <Form>FrmHealthCondition</Form>
-    </DCCReference>
-    <DCCReference Include="E:\Common\ImportCases21.pas">
-      <Form>FrmImportCases21</Form>
-    </DCCReference>
-    <DCCReference Include="E:\Common\LoadProgress.pas">
-      <Form>FrmLoadProgress</Form>
-    </DCCReference>
-    <DCCReference Include="E:\Common\MRUList.pas" />
-    <DCCReference Include="E:\Common\NewFeatures.pas">
-      <Form>FrmNewFeatures</Form>
-    </DCCReference>
-    <DCCReference Include="E:\Common\RemoveTimetable.pas">
-      <Form>FrmRemoveTimetable</Form>
-    </DCCReference>
-    <DCCReference Include="E:\Common\SearchBlocks.pas">
-      <Form>FrmSearchBlocks</Form>
-    </DCCReference>
-    <DCCReference Include="E:\Common\TeacherLoadOnWS.pas">
-      <Form>FrmTeacherLoadOnWS</Form>
-    </DCCReference>
-    <DCCReference Include="E:\Common\TimeChartGlobals.pas" />
-    <DCCReference Include="E:\Common\TimetableStatistics.pas">
-      <Form>FrmTimetableStatistics</Form>
-    </DCCReference>
-    <DCCReference Include="E:\Common\uAMGClassSubject.pas" />
-    <DCCReference Include="E:\Common\uAMGComment.pas" />
-    <DCCReference Include="E:\Common\uAMGConst.pas" />
-    <DCCReference Include="E:\Common\uAMGFaculty.pas" />
-    <DCCReference Include="E:\Common\uAMGFamily.pas" />
-    <DCCReference Include="E:\Common\uAMGHealthCondition.pas" />
-    <DCCReference Include="E:\Common\uAMGItem.pas" />
-    <DCCReference Include="E:\Common\uAMGStudent.pas" />
-    <DCCReference Include="E:\Common\uAMGSubject.pas" />
-    <DCCReference Include="E:\Common\uAMGTeacher.pas" />
-    <DCCReference Include="E:\Common\uAMGTimeTable.pas" />
-    <DCCReference Include="E:\XMLDatabaseRoutines\XML.DISPLAY.pas" />
-    <DCCReference Include="E:\XMLDatabaseRoutines\XML.STUDENTS.pas" />
-    <DCCReference Include="E:\XMLDatabaseRoutines\XML.TEACHERS.pas" />
-    <DCCReference Include="E:\XMLDatabaseRoutines\XML.TTABLE.CLS.PAS" />
-    <DCCReference Include="E:\XMLDatabaseRoutines\XML.TTABLE.LAB.pas" />
-    <DCCReference Include="E:\XMLDatabaseRoutines\XML.TTABLE.NAM.pas" />
-    <DCCReference Include="E:\XMLDatabaseRoutines\XML.TTABLE.pas" />
-    <DCCReference Include="E:\XMLDatabaseRoutines\XML.TTABLE.TTW.PAS" />
-    <DCCReference Include="E:\XMLDatabaseRoutines\XML.USERS.pas" />
-    <DCCReference Include="E:\XMLDatabaseRoutines\XML.UTILS.pas" />
     <DCCReference Include="EDCLASS.PAS">
       <Form>edclassdlg</Form>
     </DCCReference>
@@ -424,13 +533,16 @@
     <DCCReference Include="LINKSUB.PAS">
       <Form>LinkSubDlg</Form>
     </DCCReference>
+    <DCCReference Include="ListTagNames.pas">
+      <Form>FrmListTagNames</Form>
+    </DCCReference>
     <DCCReference Include="LOGONDLG.PAS">
       <Form>LoggingonDlg</Form>
     </DCCReference>
     <DCCReference Include="MAIN.PAS">
       <Form>MainForm</Form>
     </DCCReference>
-    <DCCReference Include="MANCLASH.PAS">
+    <DCCReference Include="MANCLASH.pas">
       <Form>ManClashDlg</Form>
     </DCCReference>
     <DCCReference Include="MARGINS.PAS">
@@ -451,7 +563,7 @@
     <DCCReference Include="PROMODLG.PAS">
       <Form>promotestudentdlg</Form>
     </DCCReference>
-    <DCCReference Include="REPYRSUB.PAS">
+    <DCCReference Include="REPYRSUB.pas">
       <Form>repysdlg</Form>
     </DCCReference>
     <DCCReference Include="RFREEDLG.PAS">
@@ -581,6 +693,9 @@
     </DCCReference>
     <DCCReference Include="SWAPSUB.PAS">
       <Form>SwapSubDlg</Form>
+    </DCCReference>
+    <DCCReference Include="SynergeticExport.pas">
+      <Form>FrmSynergeticExport</Form>
     </DCCReference>
     <DCCReference Include="Tagdlg.pas">
       <Form>TagDialog</Form>

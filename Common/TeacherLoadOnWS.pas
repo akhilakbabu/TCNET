@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Menus, ppParameter, ppBands, ppCtrls, ppVar, ppPrnabl, ppClass,
   ppCache, ppProd, ppReport, ppDB, ppComm, ppRelatv, ppDBJIT, Contnrs, uAMGCommon,
-  ppStrtch, ppMemo,GlobalToTcAndTcextra;
+  ppStrtch, ppMemo,GlobalToTcAndTcextra, XML.TEACHERS;
 
 type
   TTeacherLoads = class;
@@ -204,10 +204,10 @@ begin
     begin
       i := CodePoint[lTeNo, 1];
       lTeacherLoad := TTeacherLoad.Create;
-      if (Copy(TeCode[i, 0], 1, 2) <> '00') and (Trim(TeCode[i, 0]) <> '') then
+      if (Copy(XML_TEACHERS.TeCode[i, 0], 1, 2) <> '00') and (Trim(XML_TEACHERS.TeCode[i, 0]) <> '') then
       begin
-         lTeacherLoad.TeacherCode := Trim(TeCode[i, 0]);
-         lTeacherLoad.TeacherName := Trim(TeName[i, 0]) + ' (' + lTeacherLoad.TeacherCode + ')';
+         lTeacherLoad.TeacherCode := Trim(XML_TEACHERS.TeCode[i, 0]);
+         lTeacherLoad.TeacherName := Trim(XML_TEACHERS.TeName[i, 0]) + ' (' + lTeacherLoad.TeacherCode + ')';
          lTeacherLoad.TeacherLoad := TeFound[i];
          lTempList := GetTeacherSubjectsOnWS(i);
          try

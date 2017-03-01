@@ -532,8 +532,9 @@ begin
      if fn = 'SUBCODE.DAT' then
        j := 6
      else if (fn = 'TECODE.DAT') or (fn = 'ROOMS.DAT') then
-       j := 4;
-
+       j := 4
+     else if (fn = 'SubWillCount.DAT')  then
+       j := 2;
      blockwrite(tmpF,i,2);
      blockwrite(tmpF,j,2)
     end;
@@ -3316,6 +3317,7 @@ begin
       wnStFRee: StudFreeWinSelect;
       wnWorksheet: WorksheetWinSelect;
       wnGenTool: gentoolbarSelect;
+      wnStudentTag:StudentTagsSelect;    //mantis-0727
       wnTtTool: if (checkforwinorder(wnTtable) or (XML_DISPLAY.fgTTtoolbarDock=0)) then  {don't restore docked alone}
            tttoolbarSelect;
       wnBlTool: if (checkforwinorder(wnBlock) or (XML_DISPLAY.fgBlockToolbarDock=0)) then {don't restore docked alone}

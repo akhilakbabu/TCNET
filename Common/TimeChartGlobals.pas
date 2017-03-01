@@ -33,7 +33,7 @@ const
   nmbrCustom = 30;
   nmbrSubsInFaculty = 200; // was 100  #996
   nmbrTeFacs = 4;
-  nmbrTags = 16;
+  nmbrTags = 9;   // was 16 , mantis -0727
   nmbrBoxes=21;
   nmbrTrackSems=8;
   nmbrWSTspecials=5;
@@ -214,9 +214,12 @@ const
   wnFindStud=37;
   wnShowUsers=38;
   wnWorksheet=39;
+  wnStudentTag =44;  //mantis-0727
+
+
 
  {dummy 'windows' for custom text file export only}
-  wnUserExport1=40;
+  wnUserExport1=40 ;
   wnUserExport2=41;
   wnUserExport3=42;
   wnUserExportStud=43;
@@ -431,7 +434,7 @@ var
   TeDoSub:           tpSubData;  {subject count of teacher on timetable for level or year}
   teshare:           tpSubData;   {share flag for teacher subjects}
   teallot:           array[0..nmbrsubjects] of double;  {allotment of teacher subjects}
-  SuMale,SuFemale: array[0..nmbrSubjects,-1..nmbryears-1] of smallint; {student counts}
+  SuMale,SuFemale,SuUnspecified: array[0..nmbrSubjects,-1..nmbryears-1] of smallint; {student counts} 
   {room ttable}
 
   {sub ttable}

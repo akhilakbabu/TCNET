@@ -11,12 +11,12 @@ const
   szTTDayBlock=48100;
 
   nmbrDays=10;
-  nmbrYears=20;  //was 15 mantis-1304
+  nmbrYears=20;  //was 15
   nmbrLevels=150;
   nmbrSubjects=3000;
   nmbrTeachers=400;
   nmbrRooms=400;
-  nmbrPeriods = 32; //was 20 mantis-1474
+  nmbrPeriods = 32;   //was 20
   nmbrClass=2000;
   nmbrLabels=1000;
   nmbrHouse=50;
@@ -28,8 +28,8 @@ const
   nmbrCustom=30;
   nmbrSubsInFaculty=200;  // was 100
   nmbrTeFacs = 4;
-  nmbrWindows = 40; {extra for floating toolbars etc.}
-  nmbrTags=8;
+  nmbrWindows = 44; // was 40  mantis -0727 ;  {extra for floating toolbars etc.}
+  nmbrTags=9; //was  mantis -0727
   maxWinScrollRange:integer=2140483647;
   minCodeFit=5;
   LabelBase=10000;

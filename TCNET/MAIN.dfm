@@ -40,7 +40,7 @@ object MainForm: TMainForm
     Left = 0
     Top = 4
     Width = 774
-    Height = 9
+    Height = 13
     HelpContext = 1
     Align = alTop
     AutoSize = True
@@ -212,10 +212,6 @@ object MainForm: TMainForm
           Caption = 'Student &Choices Export...'
           OnClick = ExportVASSStudentChoices
         end
-      end
-      object TASSExport1: TMenuItem
-        Caption = 'TASS Export'
-        OnClick = TASSExport1Click
       end
       object mniFileImportFamilyList: TMenuItem
         Caption = 'Import Family List'
@@ -741,11 +737,9 @@ object MainForm: TMainForm
         Hint = 'Add common data to students'
         OnClick = CommonData1Click
       end
-      object TagSelect1: TMenuItem
-        Caption = 'Set Tags...'
-        HelpContext = 369
-        Hint = 'Define tags and add to students'
-        OnClick = TagSelect1Click
+      object ListTagNames1: TMenuItem
+        Caption = 'Student Tag'
+        OnClick = ListTagNames1Click
       end
       object ClearChoices1: TMenuItem
         Caption = 'Cl&ear Choices'
@@ -1103,6 +1097,18 @@ object MainForm: TMainForm
         HelpContext = 199
         Hint = 'Arrange minimized windows'
         OnClick = WindowArrange
+      end
+    end
+    object DataExport1: TMenuItem
+      Caption = 'Data Export'
+      GroupIndex = 150
+      object ASSExport1: TMenuItem
+        Caption = 'TASS Export'
+        OnClick = TASSExport1Click
+      end
+      object SynergeticExport1: TMenuItem
+        Caption = 'Synergetic Export'
+        OnClick = SynergeticExport1Click
       end
     end
     object MnuTools: TMenuItem
@@ -1643,7 +1649,7 @@ object MainForm: TMainForm
     Left = 364
     Top = 47
     Bitmap = {
-      494C010134003600D80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010134003600F00010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000E0000000010020000000000000E0
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -3531,7 +3537,7 @@ object MainForm: TMainForm
     Left = 276
     Top = 111
     Bitmap = {
-      494C01013C005400DC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013C005400F40010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000000001000001002000000000000000
       0100000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

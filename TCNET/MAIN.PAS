@@ -231,7 +231,6 @@ uses
     OpenDisplay1: TMenuItem;
     N19: TMenuItem;
     Timer2: TTimer;
-    TagSelect1: TMenuItem;
     Worksheet1: TMenuItem;
     Worksheet2: TMenuItem;
     Worksheet3: TMenuItem;
@@ -265,7 +264,6 @@ uses
     mniFileVASS: TMenuItem;
     mniFileVASSStudentChoicesExport: TMenuItem;
     mniFileVASSStudentExport: TMenuItem;
-    TASSExport1: TMenuItem;
     mnuTrackEnrolments1: TMenuItem;
     mnuWebTC: TMenuItem;
     StudentChoices1: TMenuItem;
@@ -275,6 +273,10 @@ uses
     FilePrintSetup2: TAction;
     CheckforUpdates1: TMenuItem;
     ActionImagesNew: TImageList;
+    ListTagNames1: TMenuItem;
+    DataExport1: TMenuItem;
+    ASSExport1: TMenuItem;
+    SynergeticExport1: TMenuItem;
 
     procedure FormCreate(Sender: TObject);
 
@@ -439,6 +441,8 @@ uses
     procedure Import1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure FormActivate(Sender: TObject);
+    procedure ListTagNames1Click(Sender: TObject);
+    procedure SynergeticExport1Click(Sender: TObject);
   private
     function RefreshTtableToolbar: Boolean;
   public
@@ -447,7 +451,7 @@ uses
   end;
 
 var
-  MainForm: TMainForm;      //---25/01/2017 
+  MainForm: TMainForm;
 
 implementation
 
@@ -467,7 +471,7 @@ uses
   uAMGConst, uAMGSubject, CASES21ImportOptions, SplitSubjectsConvertor, uAMGCommon,
   AbZipper, LoadProgress, ExportToTASS, ExportToCASES21, CASES21ExportDataView, RemoveTimetable,
   VASSStudentExport, VASSStudentChoicesExport, Teacher, MRUList,
-  {ZConnection,} WebTC;
+  {ZConnection,} WebTC, ListTagNames, SynergeticExport;
 
 var
  i: integer;
@@ -1035,7 +1039,7 @@ begin
  deletestudent1.enabled:=HasStuds;
  commondata1.enabled:=HasStuds;
  clearchoices1.enabled:=HasStuds;
- TagSelect1.Enabled:=HasStuds;
+// TagSelect1.Enabled:=HasStuds;
  if usrPassLevel=utGen then Textfilein1.enabled:=false;
 end;
 
@@ -2000,6 +2004,13 @@ begin
  SubjectTimeswinSelect;
 end;
 
+procedure TMainForm.SynergeticExport1Click(Sender: TObject);
+begin
+  FrmSynergeticExport:=TFrmSynergeticExport.create(self); //mantis- 1606
+   FrmSynergeticExport.showmodal;
+   FrmSynergeticExport.free;
+end;
+
 procedure TMainForm.GroupofTeachers1Click(Sender: TObject);
 begin
  GroupofTeacherswinSelect;
@@ -2047,6 +2058,11 @@ begin
    ConfigureLevels.free;  {release dlg}
    if not(saveTimeFlag) then CheckAccessRights(utTime,16,false)
   end;
+end;
+
+procedure TMainForm.ListTagNames1Click(Sender: TObject);    //---- mantis-0727
+begin
+ StudentTagsSelect;
 end;
 
 procedure TMainForm.Margins1Click(Sender: TObject);

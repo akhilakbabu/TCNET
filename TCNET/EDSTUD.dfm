@@ -4,8 +4,8 @@ object edstuddlg: Tedstuddlg
   HelpContext = 47
   BorderStyle = bsDialog
   Caption = 'Change Student'
-  ClientHeight = 440
-  ClientWidth = 587
+  ClientHeight = 461
+  ClientWidth = 611
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -273,7 +273,7 @@ object edstuddlg: Tedstuddlg
       Width = 121
       Height = 21
       Hint = 'Enter a year name'
-      ItemHeight = 0
+      ItemHeight = 13
       TabOrder = 5
       OnChange = ComboBox1Change
       OnEnter = ComboBox1Enter
@@ -285,7 +285,7 @@ object edstuddlg: Tedstuddlg
       Width = 121
       Height = 21
       Hint = 'Enter or change house of student'
-      ItemHeight = 0
+      ItemHeight = 13
       TabOrder = 7
       OnChange = ComboBox2Change
       OnEnter = ComboBox2Enter
@@ -297,7 +297,7 @@ object edstuddlg: Tedstuddlg
       Width = 121
       Height = 21
       Hint = 'Enter teacher code of tutor, if required'
-      ItemHeight = 0
+      ItemHeight = 13
       TabOrder = 8
       OnChange = ComboBox3Change
       OnEnter = ComboBox3Enter
@@ -310,7 +310,7 @@ object edstuddlg: Tedstuddlg
       Width = 121
       Height = 21
       Hint = 'Enter home room of student, if required'
-      ItemHeight = 0
+      ItemHeight = 13
       TabOrder = 9
       OnChange = ComboBox4Change
       OnEnter = ComboBox4Enter
@@ -323,7 +323,7 @@ object edstuddlg: Tedstuddlg
       Width = 43
       Height = 21
       Hint = 'Enter M or F for sex.'
-      ItemHeight = 0
+      ItemHeight = 13
       TabOrder = 3
       OnChange = ComboBox5Change
       OnEnter = ComboBox5Enter
@@ -336,7 +336,7 @@ object edstuddlg: Tedstuddlg
       Width = 121
       Height = 21
       Hint = 'Enter or change roll class code of student'
-      ItemHeight = 0
+      ItemHeight = 13
       TabOrder = 4
       OnChange = ComboBox6Change
       OnEnter = ComboBox6Enter

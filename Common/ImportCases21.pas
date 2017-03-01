@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Buttons, ExtCtrls, uAMGStudent;
+  Dialogs, StdCtrls, Buttons, ExtCtrls, uAMGStudent, XML.TEACHERS, XML.STUDENTS;
 
 type
   TFrmImportCases21 = class(TForm)
@@ -148,10 +148,10 @@ begin
                 else
                 begin
                   lCodePalce := FindNextCode(1);
-                  TeCode[lCodePalce, 0] := lTeacher.Code;
-                  TeName[lCodePalce, 0]:= lTeacher.TeacherFirstName + ' ' + lTeacher.TeacherSurname;
+                  XML_TEACHERS.TeCode[lCodePalce, 0] := lTeacher.Code;
+                  XML_TEACHERS.TeName[lCodePalce, 0]:= lTeacher.TeacherFirstName + ' ' + lTeacher.TeacherSurname;
 
-                  Load[lCodePalce] := 0;
+                  XML_TEACHERS.Load[lCodePalce] := 0;
                   InsertCode(1, lCodePalce);
                   Inc(lTeacherCount);
                 end;
@@ -210,10 +210,10 @@ begin
                 else
                 begin
                   lCodePalce := FindNextCode(2);
-                  TeCode[lCodePalce, 1] := lRoom.Code;
-                  TeName[lCodePalce, 1]:= lRoom.RoomName;
+                  XML_TEACHERS.TeCode[lCodePalce, 1] := lRoom.Code;
+                  XML_TEACHERS.TeName[lCodePalce, 1]:= lRoom.RoomName;
 
-                  Rosize[lCodePalce] := lRoom.Seating;
+                  XML_TEACHERS.Rosize[lCodePalce] := lRoom.Seating;
                   InsertCode(2, lCodePalce);
                   Inc(lRoomCount);
                 end;
@@ -331,7 +331,7 @@ begin
   aStr := UpperCase(Trim(pTeacherCode));
   if Length(aStr) > 0 then
     for i := 1 to NumCodes[1] do
-      if aStr = Trim(TeCode[i, 0]) then
+      if aStr = Trim(XML_TEACHERS.TeCode[i, 0]) then
       begin
         Result := True;
         Break;
@@ -347,7 +347,7 @@ begin
   aStr := UpperCase(Trim(pRoomCode));
   if Length(aStr) > 0 then
     for i := 1 to NumCodes[2] do
-      if aStr = Trim(TeCode[i, 1]) then
+      if aStr = Trim(XML_TEACHERS.TeCode[i, 1]) then
       begin
         Result := True;
         Break;
@@ -495,7 +495,8 @@ var
     for k := 1 to OldNum do
     begin
       try
-        if ((Stud[k].stname=stxname) and (Stud[k].first=stxfirst) and (Stud[k].house = stxhouse)  and (Stud[k].TCyear = stxyear)) then
+        if ((XML_STUDENTS.Stud[k].stname=stxname) and (XML_STUDENTS.Stud[k].first=stxfirst)
+        and (XML_STUDENTS.Stud[k].house = stxhouse)  and (XML_STUDENTS.Stud[k].TCyear = stxyear)) then
         begin
           Result := True;
           Break;
@@ -510,7 +511,7 @@ begin
   lCount := 0;
   lStudCount := 0;
   lFound := False;
-  while (lCount < pStudents.Count) and (numstud < nmbrStudents) do
+  while (lCount < pStudents.Count) and (XML_STUDENTS.numstud < nmbrStudents) do
   begin
     lStudent := TAMGImportStudent(pStudents.Items[lCount]);
     stxname := lStudent.Surname;
@@ -545,32 +546,32 @@ begin
       //stxhome := 0;
       stxhome := findroom2(Copy(lStudent.HomeRoom, 1, LenCodes[2]));
 
-      OldNum := NumStud;
+      OldNum := XML_STUDENTS.NumStud;
       if not CheckSkip then
       begin
-        if TooMany('students', numstud, nmbrStudents) then
+        if TooMany('students', XML_STUDENTS.numstud, nmbrStudents) then
           Break;
         //add student
-        Inc(numstud);
-        SetLength(Stud, (NumStud + 1)); {zero based so +1}
+        XML_STUDENTS.numstud := XML_STUDENTS.numstud + 1;
+        SetLength(XML_STUDENTS.Stud, (XML_STUDENTS.NumStud + 1)); {zero based so +1}
 
-        Stud[numstud].stname := stxname;
-        Stud[numstud].first := stxfirst;
-        Stud[numstud].TCyear := stxyear;
+        XML_STUDENTS.Stud[XML_STUDENTS.numstud].stname := stxname;
+        XML_STUDENTS.Stud[XML_STUDENTS.numstud].first := stxfirst;
+        XML_STUDENTS.Stud[XML_STUDENTS.numstud].TCyear := stxyear;
 
         StudYearFlag[stxyear] := True;
 
-        Stud[numstud].sex := stxsex;
-        Stud[numstud].id := stxid;
-        Stud[numstud].tcclass := stxclass;
-        Stud[numstud].house := stxhouse;
-        Stud[numstud].tutor := stxtutor;
-        Stud[numstud].home := stxhome;
-        Stud[numstud].tctag := 0;
+        XML_STUDENTS.Stud[XML_STUDENTS.numstud].sex := stxsex;
+        XML_STUDENTS.Stud[XML_STUDENTS.numstud].id := stxid;
+        XML_STUDENTS.Stud[XML_STUDENTS.numstud].tcclass := stxclass;
+        XML_STUDENTS.Stud[XML_STUDENTS.numstud].house := stxhouse;
+        XML_STUDENTS.Stud[XML_STUDENTS.numstud].tutor := stxtutor;
+        XML_STUDENTS.Stud[XML_STUDENTS.numstud].home := stxhome;
+        XML_STUDENTS.Stud[XML_STUDENTS.numstud].tctag := 0;
 
         SetStArrays;
-        StudSort[numStud] := NumStud;
-        ResetStudentOrder(NumStud);
+        StudSort[XML_STUDENTS.numStud] := XML_STUDENTS.NumStud;
+        ResetStudentOrder(XML_STUDENTS.NumStud);
         Inc(lStudCount);
         lFound := True;
       end;
