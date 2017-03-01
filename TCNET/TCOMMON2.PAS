@@ -842,7 +842,7 @@ begin
  for j:=-1 to years-1 do
   for i:=0 to nmbrsubjects do
    begin
-    SuMale[i,j]:=0; SuFemale[i,j]:=0;
+    SuMale[i,j]:=0; SuFemale[i,j]:=0;    SuUnspecified[i,j] :=0;
    end; {for i}
  {now parse and inc. counts}
  if XML_STUDENTS.numstud>0 then
@@ -860,7 +860,7 @@ begin
        end;
      end;
    end
-   else
+   else if uppercase(XML_STUDENTS.Stud[i].sex)='M' then
     begin  {SuMale}
      for j:=1 to chmax do
      begin
@@ -871,7 +871,20 @@ begin
          inc(SuMale[a,-1]);
        end;
      end;
+    end  //SuUnspecified  mantis-0181
+    Else
+    begin  {SuMale}
+    for j:=1 to chmax do
+     begin
+      a:=XML_STUDENTS.Stud[i].Choices[j];
+      if (a>0) and (a<=NumCodes[0]) then
+       begin
+         inc(SuUnspecified[a,XML_STUDENTS.Stud[i].TcYear]);
+         inc(SuUnspecified[a,-1]);
+       end;
+     end;
     end;
+   // mantis-0181
   end; {for i}
 end;
 

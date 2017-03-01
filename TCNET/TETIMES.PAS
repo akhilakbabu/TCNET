@@ -203,7 +203,7 @@ var
  i: integer;
 begin
  calculateloads;
- SetLength(Tabs,10);
+ SetLength(Tabs,12); //was 10   mantis-0181
  headwidth:=canvas.textwidth('Teacher Loads - Summary ');
  Tabs[1]:=fwcode[1]+blankwidth*3+fwcodename[1];
  Tabs[4]:=canvas.textwidth(yearshort+': ')+fwyearname+blankwidth*3+fwclass+fwcode[0];
@@ -221,13 +221,15 @@ begin
    MaxTab(4,fwclass,'Class');
    MaxTab(5,0,genderLong[0]);  {MaxTab(5,0,'Males')}
    MaxTab(6,0,genderLong[1]);  { MaxTab(6,0,'Females')}
-   MaxTab(7,0,'Stud.');
-   MaxTab(8,0,'Times');
-   MaxTab(9,0,'Alloted ');
+   MaxTab(7,0,genderLong[2]);  { MaxTab(7,0,'Unspecified')}  //mantis-0181
+   MaxTab(8,0,'Stud.');    //was 7   mantis-0181
+   MaxTab(9,0,'Times');    //was 8   mantis-0181
+   MaxTab(10,0,'Alloted ');  //was 9  mantis-0181
+ //  MaxTab(11,0,'Periods/Room ');  //  mantis-0181 .b
   end;
  case winView[wnTeTimes] of
   0: MaxW:=Tabs[1]+hmargin*2+(6*Tabs[4]);
-  1: MaxW:=(longint(hmargin)*2)+longint(Tabs[9])
+  1: MaxW:=(longint(hmargin)*2)+longint(Tabs[11])  //was Tabs[9]  mantis-0181  .b
        +TeacherTimes.canvas.textwidth('/99 ');
   2: MaxW:=longint(Tabs[1])+(longint(hmargin)*2)+(longint(lcnt)*longint(Tabs[5]));
  end; {case}
@@ -275,9 +277,10 @@ begin
     YearUse:=yeary;if XML_DISPLAY.MatchAllYears then YearUse:=-1;
     if SuMale[j,YearUse]>0 then PrintOffset(SuMale[j,YearUse],Tabs[4]);
     if SuFemale[j,YearUse]>0 then PrintOffset(SuFemale[j,YearUse],Tabs[5]);
-     mycount:=SuMale[j,YearUse]+SuFemale[j,YearUse];
-    if mycount>0 then PrintOffset(mycount,Tabs[6]);
-    PrintOffset(a,Tabs[7]);
+    if SuUnspecified[j,YearUse]>0 then PrintOffset(SuUnspecified[j,YearUse],Tabs[6]);  //mantis-0181
+      mycount:=SuMale[j,YearUse]+SuFemale[j,YearUse]+SuUnspecified[j,YearUse]; //mantis-0181
+    if mycount>0 then PrintOffset(mycount,Tabs[7]);   //was Tabs[6]  mantis-0181
+    PrintOffset(a,Tabs[8]);     //was Tabs[7] mantis-0181
     str(TeAllot[j]:6:2,aStr);
 
     if SubWillcount[j]='N' then   //Mantis-1295
@@ -286,7 +289,7 @@ begin
         aStr :='0.00';
     end ;
 
-    x:=Tabs[9]-self.canvas.textwidth(aStr);
+    x:=Tabs[10]-self.canvas.textwidth(aStr);    //was Tabs[9]  mantis-0181
     printwl(aStr);
     fcolor(cpBlockClash);
     if TeShare[j]=-1 then printwl(' shared');
@@ -366,10 +369,15 @@ begin
        printw('Class'); x:=Tabs[4];
        printw(genderLong[0]); {printw('Males');} x:=Tabs[5];
        printw(genderLong[1]); {printw('Females');} x:=Tabs[6];
-       printw('Stud.'); x:=Tabs[7];
+       printw(genderLong[2]); {printw('Unspecified');} x:=Tabs[7];  // mantis-0181
+
+
+       printw('Stud.'); x:=Tabs[8]; //was Tabs[7]  mantis-0181
        printw('Times');
        tmpstr:=TslotUnitName[TslotUnit];
-       x:=Tabs[9]-canvas.textwidth(tmpstr); printwl(tmpstr);
+       x:=Tabs[10]-canvas.textwidth(tmpstr); printwl(tmpstr);  //was Tabs[9]  mantis-0181
+    //   x:=Tabs[11]-canvas.textwidth('Periods/Room.');// mantis-0181
+    //   printw('   Periods/Room.'); // mantis-0181
       end;
    2: begin
        if XML_DISPLAY.teachertimesyear=years then
@@ -474,7 +482,7 @@ begin
          x:=Tabs[1];
          printwl('Duty'+chr(49+v)+': '+XML_TEACHERS.DutyCode[i,v]);
          str(XML_TEACHERS.DutyLoad[i,v]:6:2,tmpStr);
-         x:=Tabs[9]-self.canvas.textwidth(tmpstr);
+         x:=Tabs[10]-self.canvas.textwidth(tmpstr);  // was Tabs[9] mantis-0181
          printwl(tmpstr);
          ldt:=ldt+XML_TEACHERS.DutyLoad[i,v];
          newline;
@@ -513,21 +521,15 @@ begin
        end;
       x:=Tabs[5]-blankwidth*3;
       printwl('Totals ');
-
-    //  ShowMessage(Floattostr(TeLoad[i]))  ;  //mantis-1295
-      PrintOffset(Teaching[i],Tabs[7]);
-
+      PrintOffset(Teaching[i],Tabs[8]);  // was Tabs[7] mantis-0181
 
     //  TeLoad[i] :=TeLoad[i]-subcount;
 
       str((TeLoad[i]-subcount+ldt):6:2,tmpstr);
 
-
-
      // str((TeLoad[i]-subcount):6:2,tmpstr);  //mantis-1295
 
-
-      x:=Tabs[9]-canvas.textwidth(tmpstr);
+      x:=Tabs[10]-canvas.textwidth(tmpstr);  //was Tabs[9]  mantis-0181
       printwl(tmpstr);
       printw('/'+inttostr(XML_TEACHERS.Load[i]));
       newline;
