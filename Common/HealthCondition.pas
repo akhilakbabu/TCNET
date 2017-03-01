@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, Buttons, ComCtrls, ExtCtrls, Menus, IdBaseComponent,
-  IdIntercept, IdInterceptThrottler;
+  IdIntercept, IdInterceptThrottler, XML.TEACHERS;
 
 type
   TFrmHealthCondition = class(TForm)
@@ -565,8 +565,8 @@ begin
           lListItem.SubItems.Add(lStudent.Sex);
           lListItem.SubItems.Add(YearName[lStudent.StudYear]);
           lListItem.SubItems.Add(ClassCode[lStudent.tcClass]);
-          lListItem.SubItems.Add(TeName[lStudent.Home, 1]);
-          lListItem.SubItems.Add(TeName[lStudent.Tutor, 0]);
+          lListItem.SubItems.Add(XML_TEACHERS.TeName[lStudent.Home, 1]);
+          lListItem.SubItems.Add(XML_TEACHERS.TeName[lStudent.Tutor, 0]);
         end; // if
       end; // if
     end; // for

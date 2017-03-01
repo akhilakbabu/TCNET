@@ -805,10 +805,10 @@ begin
    tagbox[i].Alignment:=taLeftJustify;
    tagbox[i].caption:=TagCode[i];
    tagbox[i].width:=30;
-   tagbox[i].top:=(((i-1)div 8)*(tagbox[i].Height+(ygap div 2)))+lblTags.top-2;
-   if i<9 then
+   tagbox[i].top:=(((i-1)div 9)*(tagbox[i].Height+(ygap div 2)))+lblTags.top-2;   //was 8  mantis 0727
+   if i<10 then                                                                   //was9 ,,
      tagbox[i].left:=lblTags.width+lblTags.left+((i-1)*(tagbox[i].width+xgap*3))+xgap
-    else tagbox[i].left:=tagbox[i-8].left;
+    else tagbox[i].left:=tagbox[i-9].left;
    tagbox[i].ShowHint:=true;
    tagbox[i].Hint:=TagName[i];
   end;

@@ -79,6 +79,7 @@ uses WinTypes, WinProcs, Classes, Graphics, Forms, Controls, StdCtrls,
   procedure TeacherListwinSelect;
   procedure StBlockClashWinSelect;
   procedure StudFreeWinSelect;
+  procedure StudentTagsSelect;    //mantis-0727
 
   procedure sortCodes(code: smallint);
 
@@ -188,7 +189,7 @@ implementation
 uses
   Tcgetdir,StCommon,tcload, main,SuWnd,TeWnd,RoWnd,RollClassWnd,FacWnd,HouseWnd,
   TimesWnd, CodeView,subyr,tcinfo,ttable, worksheet, block1,subbysub,subbyslt,
-  studlist,telist,StBlockClash,StudFree, printers,studttab,teachtt,roomtt,subjcttt,
+  studlist,telist,StBlockClash,StudFree, printers,studttab,teachtt,roomtt,subjcttt,ListTagNames,//mantis-0727
   clashhlp,blkclash,teclash,roclash,tefree,rofree, tetimes,subtimes,grpofte,clmatrix,
   clmatsel,edcustom, stinput,findstud,tcommon2,showuser,wsToolbarwin, tttoolbarwin,
   gentool,blcktool,tcommon5,CustomOutput, DCPrijndael,DCPsha256,DCPsha1, uAMGClassSubject,
@@ -845,6 +846,7 @@ begin
   wnStBlClash: mywin:=StClashWin;
   wnStFRee: mywin:=StudFreeWin;
   wnShowUsers: mywin:=ShowUsersWin;
+  wnStudentTag :mywin:=FrmListTagNames;//mantis-0727
  end;
  result:=mywin;
 end;
@@ -1028,6 +1030,7 @@ begin
     wnStFRee: StudFreeOut;
     wnShowUsers: ShowUsersWinOut;
     wnWorksheet: workSheetText;
+    wnStudentTag: ListTagNames.SuTagOut;    //mantis-0727
 
     wnUserExport1: Transfer1TextExport;  {custom for Transfer 1}
     wnUserExport2: Transfer2TextExport;  {custom for Transfer 2}
@@ -1571,6 +1574,7 @@ begin
   wnStBlClash: tmpStr:=tmpStr+'Students with Block Clashes';
   wnStFRee: tmpStr:=tmpStr+'Students Free in Blocks';
   wnFindStud: tmpStr:=tmpStr+'Student Find';
+  wnStudentTag:tmpStr:=tmpStr+'Student Tag';    //mantis-0727
  end; {case}
  result:=tmpStr;
 end;
@@ -1615,6 +1619,7 @@ begin
   wnFindStud:  findstud.findstudentprint; {student find (tt)}
   wnShowUsers: ShowUsersWinPrint;
   wnWorksheet: worksheetPrint;
+  wnStudentTag: ListTagNames.SuTagPrint;   //mantis-0727
  end; {case}
 
 end;
@@ -3065,6 +3070,18 @@ begin
  if wnFlag[wnStFRee] then StudFreeWin.show
   else StudFreeWin:=TStudFreeWin.create(application);
 end;
+
+procedure StudentTagsSelect;   //mantis-0727
+begin
+ if wnFlag[wnStudentTag]
+  then FrmListTagNames.show
+  else
+   FrmListTagNames:=TFrmListTagNames.create(application);
+
+
+
+end;
+
 
 procedure BlockwinSelect;
 var
