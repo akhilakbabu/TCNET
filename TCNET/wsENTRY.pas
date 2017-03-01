@@ -24,7 +24,6 @@ type
     Label6: TLabel;
     Label7: TLabel;
     Edit5: TEdit;
-    Edit6: TEdit;
     Label8: TLabel;
     Label9: TLabel;
     Label11: TLabel;
@@ -38,12 +37,12 @@ type
     ComboBox3: TComboBox;
     ComboBox4: TComboBox;
     ComboBox5: TComboBox;
+    cboSubject: TComboBox;
     procedure FormCreate(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure AutoMoveClick(Sender: TObject);
     procedure ShareBoxClick(Sender: TObject);
     procedure Edit2Change(Sender: TObject);
-    procedure Edit6Change(Sender: TObject);
     procedure LabelBoxClick(Sender: TObject);
     procedure EnterBtnClick(Sender: TObject);
     procedure SkipBtnClick(Sender: TObject);
@@ -57,6 +56,7 @@ type
     procedure ComboBox3Change(Sender: TObject);
     procedure ComboBox4Change(Sender: TObject);
     procedure ComboBox5Change(Sender: TObject);
+    procedure cboSubjectChange(Sender: TObject);
   private
     procedure Restore;
     procedure NewPos;
@@ -106,7 +106,8 @@ end;
 
 procedure TwsEntryDlg.ClearPos;
 begin
- edit5.Text:='';   edit6.Text:='';    Combobox4.Text:='';   Combobox5.Text:='';
+ edit5.Text:='';       Combobox4.Text:='';   Combobox5.Text:='';
+ cboSubject.text :='';  //mantis -01591
 end;
 
 procedure TwsEntryDlg.SetButtonStatus;
@@ -175,10 +176,11 @@ begin
    else s:='';
    s:=TrimRight(s);
    Edit5.text:=s;
-   Edit6.text:='';
+   cboSubject.text :='';   //mantis -01591
    Combobox4.text:='';
    Combobox5.text:='';
-   Edit5.Enabled:=True; Edit6.Enabled:=False;
+   Edit5.Enabled:=True;
+   cboSubject.Enabled:=False;   //mantis -01591
    Combobox4.Enabled:=False; Combobox5.Enabled:=False;
   end
  else
@@ -186,9 +188,23 @@ begin
    Labelbox.checked:=false;
    EnLabel:=0;
    Edit5.text:='';
-   if ((Sub1>0) and (Sub1<=nmbrsubjects)) then
+
+    //mantis -01591
+  { if ((Sub1>0) and (Sub1<=nmbrsubjects)) then
     Edit6.text:=trim(SubCode[Sub1])
-   else Edit6.text:='';
+   else Edit6.text:='';  }
+
+
+    cboSubject.Clear;
+  for i := 1 to CodeCount[0] do
+    cboSubject.Items.AddObject(Trim(SubCode[CodePoint[i, 0]]), TObject(codepoint[i, 0]));
+
+   if ((Sub1>0) and (Sub1<=nmbrsubjects)) then
+    cboSubject.text := trim(SubCode[Sub1])
+   else
+    cboSubject.text := '';
+         //mantis -01591
+
 
    //populate Teacher dropdown
    for j:=1 to numcodes[1] do TeFound[j]:=false;
@@ -237,7 +253,8 @@ begin
     Combobox5.Text := Trim(XML_TEACHERS.tecode[room1,1])
    else
      Combobox5.Text := '';
-   Edit5.Enabled:=False; Edit6.Enabled:=True;
+   Edit5.Enabled:=False;
+   cboSubject.Enabled:=True;   //mantis -01591
    Combobox4.Enabled:=True; Combobox5.Enabled:=True;
   end;
  Sharebox.Checked:=flgShare;
@@ -264,7 +281,8 @@ begin
  label1.caption:='&'+Yeartitle;
 
  Edit5.Maxlength:=szTcLabel;
- Edit6.Maxlength:=lencodes[0];
+ //Edit6.Maxlength:=lencodes[0];
+ cboSubject.Maxlength :=lencodes[0];  //mantis -01591
  Combobox4.Maxlength:=lencodes[1];
  Combobox5.Maxlength:=lencodes[2];
  BringIntoView;
@@ -298,7 +316,7 @@ begin
  if (posl<>oldval) then NewPos;
 end;
 
-
+ {
 procedure TwsEntryDlg.Edit6Change(Sender: TObject);
 var
  codeStr: string;
@@ -307,7 +325,7 @@ begin
  Sub1:=checkCode(0,codestr);
  if Sub1=0 then label11.caption:='Enter Subject code'
   else label11.caption:=subname[Sub1];
-end;
+end; }
 
 Function CheckClash(Te,code,b,y,l: integer): bool;
 var
@@ -337,12 +355,14 @@ procedure TwsEntryDlg.LabelBoxClick(Sender: TObject);
 begin                                    
  if Labelbox.checked=true then
   begin
-   Edit5.Enabled:=True; Edit6.Enabled:=False;
+   Edit5.Enabled:=True;
+   cboSubject.Enabled:=False;   //mantis -01591
    Combobox4.Enabled:=False; Combobox5.Enabled:=False;
   end
  else
   begin
-   Edit5.Enabled:=False; Edit6.Enabled:=True;
+   Edit5.Enabled:=False;
+   cboSubject.Enabled:=True;   //mantis -01591
    Combobox4.Enabled:=True; Combobox5.Enabled:=True;
   end;
 end;
@@ -439,9 +459,9 @@ var
 begin
 if Labelbox.checked=false then
  begin
- if (Sub1=0) and (trim(Edit6.text)<>'') then
+ if (Sub1=0) and (trim(cboSubject.text)<>'') then     //mantis -01591
   begin
-   ShowMsg('Check subject code',edit6);
+   ComboMsg('Check subject code',cboSubject);
    exit;
   end;
  if (Te1=0) and (trim(Combobox4.text)<>'') then
@@ -489,6 +509,17 @@ end;
 procedure TwsEntryDlg.SkipBtnClick(Sender: TObject);
 begin                                     
  Stepon;
+end;
+
+procedure TwsEntryDlg.cboSubjectChange(Sender: TObject);  //mantis -01591
+var
+ codeStr: string;
+begin
+ codeStr:=trim(cboSubject.text);
+ Sub1:=checkCode(0,codestr);
+ if Sub1=0 then label11.caption:='Enter Subject code'
+  else label11.caption:=subname[Sub1];
+
 end;
 
 procedure TwsEntryDlg.ClearBtnClick(Sender: TObject);
