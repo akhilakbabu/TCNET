@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, XML.UTILS,GlobalToTcAndTcextra, XML.DISPLAY;
+  Dialogs, StdCtrls, XML.UTILS,GlobalToTcAndTcextra, XML.DISPLAY,XML.STUDENTS;
 
 type
   TFrmExportTASS = class(TForm)
@@ -215,6 +215,7 @@ var
             end;
           end; {for L}
       end;  // for Year
+
       if lDataFound then
       begin
         lFrmLoadProgress.UpdateProgress(25, Format(AMG_EXPORTING_YEAR_TTABLE_MSG, ['group', GOSname[GOSmenu[XML_DISPLAY.GroupIndexDisplay]]]), 900);
@@ -226,7 +227,36 @@ var
       Result := lDataFound;
     end;
   end;
+     //-----------Mantis-01608--------------------
+  function SubjectCodeReportCodeExport: Boolean;
+  var i : integer;
+    lSubFound: Boolean;
+  begin
+     lSubFound := False;
+    try
+      lList.Clear;
 
+      for i := 1 to CodeCount[0] do
+      Begin
+         lstr := '';
+         lStr := subcode[i] ;
+         lStr := lStr+','+SubReportCode[i];
+         lList.Add(lStr);
+
+         lSubFound:=True;
+      End;
+      if lSubFound then
+      begin
+       // lFrmLoadProgress.UpdateProgress(25, Format( AMG_SUBJECT_LIST, ['group', GOSname[GOSmenu[XML_DISPLAY.GroupIndexDisplay]]]), 900);
+        lFrmLoadProgress.UpdateProgress(25,  AMG_SUBJECT_LIST, 2500);
+      end;
+    finally
+      lList.SaveToFile('TASS_code_translations.csv');
+      Application.ProcessMessages;
+      Result := lSubFound;
+    end;
+  end;
+    //-----------Mantis-01608--------------------
 begin
   lList := TStringList.Create;
   lFrmLoadProgress := TFrmLoadProgress.Create(Application);
@@ -249,21 +279,21 @@ begin
     begin
       i := StGroup[j];
       lstr := '';
-      lStr := Trim(Stud[i].stname);
+      lStr := Trim(XML_STUDENTS.Stud[i].stname);
       lStr := lStr + ',';
-      lStr := lStr + Trim(Stud[i].first);
+      lStr := lStr + Trim(XML_STUDENTS.Stud[i].first);
       lStr := lStr + ',';
-      lStr := lStr + trim(Stud[i].Sex);
+      lStr := lStr + trim(XML_STUDENTS.Stud[i].Sex);
       lStr := lStr + ',';
-      lStr := lStr + trim(Stud[i].ID);
+      lStr := lStr + trim(XML_STUDENTS.Stud[i].ID);
       lStr := lStr + ',';
-      lStr := lStr + Trim(YearName[Stud[i].TcYear]);
+      lStr := lStr + Trim(YearName[XML_STUDENTS.Stud[i].TcYear]);
       lStr := lStr + ',';
       lStr := lStr + ''; // add a blank
       for n := 1 to chmax do
       begin
          // lStr := Trim(Stud[i].ID);
-        m := Stud[i].Choices[n];
+        m := XML_STUDENTS.Stud[i].Choices[n];
         if m <= 0 then continue;
         //if (pCases21Spec) then begin
         //  lStr := Copy(Trim(Stud[i].ID), 1, 7);  //skey   10 Char
@@ -284,7 +314,7 @@ begin
         lList.Add(lStr);
       if j > 0 then
           lProgress := Round((50 * j) / GroupNum);
-        lFrmLoadProgress.UpdateProgress(lProgress - lPrevProgress, Format(AMG_EXPORTING_SUBJECT_SELECTION_MSG, [Stud[i].ID]), 3);
+        lFrmLoadProgress.UpdateProgress(lProgress - lPrevProgress, Format(AMG_EXPORTING_SUBJECT_SELECTION_MSG, [XML_STUDENTS.Stud[i].ID]), 3);
         lPrevProgress := lProgress;
       end;
     end;
@@ -308,8 +338,23 @@ begin
     if not DEETdumpTTableOut and not lStudDataFound then
       lMsg := AMG_NO_DATA_FOUND_MSG
     else
-      lMsg := Format(AMG_DATA_EXPORTED_TO_CASES21_MSG, [QuotedStr(Directories.DataDir)]);
+    Begin
+     // lMsg := Format(AMG_DATA_EXPORTED_TO_CASES21_MSG, [QuotedStr(Directories.DataDir)]);
+      lMsg := 'TASS files have been exported and are now ready to be imported into TASS.web.' ;
+      lMsg := lMsg+'The exported files have been saved to data directory' +QuotedStr(Directories.DataDir)  ;
+    end;
     MessageDlg(lMsg, mtInformation, [mbOK], 0);
+
+    //-----------Mantis-01608--------------------
+    if not SubjectCodeReportCodeExport and not lStudDataFound then
+      lMsg := AMG_NO_DATA_FOUND_MSG
+    else
+      lMsg := Format( AMG_SUBJECT_LIST, [QuotedStr(Directories.DataDir)]);
+
+
+
+    //--------------Mantis-01608------------------------
+
   finally
     //FreeAndNil(lFrmSplitSubjectConv);
     FreeAndNil(lTtabledSubjects);
