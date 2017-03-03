@@ -26,7 +26,7 @@ type
 
 
 var
-  passID:    array[0..nmbrUsers] of string[szPassID];
+  passID:    array[0..nmbrUsers] of string; //  Mantis-01618 ;[szPassID];
   password:  array[0..nmbrUsers] of string[szPassword];
   passlevel: array[0..nmbrUsers] of smallint;
   passUserDir: array[0..nmbrUsers] of string[szUserDirName];
@@ -195,7 +195,7 @@ begin
       begin
         passWord[i]:=trim(Decrypt(passWord[i]));
         passID[i]:=trim(Decrypt(passID[i]));
-        passUserDir[i]:=trim(Decrypt(passUserDir[i]));
+        passUserDir[i]:=trim((passUserDir[i]));   // Decrypt Mantis-01618
       end;
       //for i:=1 to UserRecordsCount do
       //begin
@@ -225,7 +225,7 @@ var
 begin
     chdir(_datadir);
     _forcedEncryption := Encrypted or true;
-    _forcedEncryption:= False;
+  //  _forcedEncryption:= False;    //  Mantis-01618
     _XML := CreateXMLDoc('USERS', True);//create XML doc with root node named "root"
     _XML.WriterSettings.IndentType := itIndent;
     _Root := _XML.DocumentElement;
@@ -238,7 +238,7 @@ begin
         if _forcedEncryption then begin
           _UserNode.SetAttribute('PASSWORD', Crypt(passWord[i]));
           _UserNode.SetAttribute('PASSID', Crypt(passID[i]));
-          _UserNode.SetAttribute('PASSUSERDIR', Crypt(passUserDir[i]));
+         _UserNode.SetAttribute('PASSUSERDIR', (passUserDir[i]));    //was Crypt  Mantis-01618
         end
         else begin
           _UserNode.SetAttribute('PASSWORD', passWord[i]);

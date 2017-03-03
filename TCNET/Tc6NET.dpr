@@ -217,7 +217,9 @@ uses
   GlobalToTcAndTcextra in '..\Common\GlobalToTcAndTcextra.pas',
   XML.DISPLAY in '..\XMLDatabaseRoutines\XML.DISPLAY.pas',
   XML.TEACHERS in '..\XMLDatabaseRoutines\XML.TEACHERS.pas',
-  XML.STUDENTS in '..\XMLDatabaseRoutines\XML.STUDENTS.pas';
+  XML.STUDENTS in '..\XMLDatabaseRoutines\XML.STUDENTS.pas',
+  SynergeticExport in 'SynergeticExport.pas' {FrmSynergeticExport},
+  ListTagNames in 'ListTagNames.pas' {FrmListTagNames};
 
 {$R *.RES}
 
@@ -244,5 +246,7 @@ begin
   Application.CreateForm(TFrmVASSStudentChoicesExport, FrmVASSStudentChoicesExport);
   Application.CreateForm(TFrmTeacher, FrmTeacher);
   Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TFrmSynergeticExport, FrmSynergeticExport);
+  Application.CreateForm(TFrmListTagNames, FrmListTagNames);
   Application.Run;
 end.
