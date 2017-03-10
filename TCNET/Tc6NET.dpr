@@ -37,7 +37,7 @@ uses
   LINKSUB in 'LINKSUB.PAS' {LinkSubDlg},
   STCLASH in 'STCLASH.PAS' {StClashHelpDlg},
   ENTRY in 'ENTRY.PAS' {EntryDlg},
-  MANCLASH in 'MANCLASH.PAS' {ManClashDlg},
+  MANCLASH in 'MANCLASH.pas' {ManClashDlg},
   EXSUB in 'EXSUB.PAS' {ExcludeSubDlg},
   TTVERS in 'TTVERS.PAS' {VersionDlg},
   CNFGLEV in 'CNFGLEV.PAS' {ConfigureLevels},
@@ -90,7 +90,7 @@ uses
   ADDSTUD in 'ADDSTUD.PAS' {addstuddlg},
   DELSTUD in 'DELSTUD.PAS' {delstuddlg},
   DELYRSUB in 'DELYRSUB.PAS' {delyrsubdlg},
-  REPYRSUB in 'REPYRSUB.PAS' {repysdlg},
+  REPYRSUB in 'REPYRSUB.pas' {repysdlg},
   SUBYR in 'SUBYR.PAS' {Subyearwin},
   EDSTUD in 'EDSTUD.PAS' {edstuddlg},
   wsAlter in 'wsAlter.pas' {wsAlterDlg},
@@ -168,6 +168,7 @@ uses
   SplitSubjectsConvertor in 'SplitSubjectsConvertor.pas' {FrmSplitSubjectConv},
   StudentClashes in 'StudentClashes.pas' {FrmStudentClashes},
   AllTargetTimes in 'AllTargetTimes.pas' {FrmShowAllTargetTimes},
+  ListTagNames in 'ListTagNames.pas' {FrmListTagNames},
   TimeChartGlobals in '..\Common\TimeChartGlobals.pas',
   uAMGConst in '..\Common\uAMGConst.pas',
   FamilyClash in 'FamilyClash.pas' {FrmFamilyClash},
@@ -218,8 +219,7 @@ uses
   XML.DISPLAY in '..\XMLDatabaseRoutines\XML.DISPLAY.pas',
   XML.TEACHERS in '..\XMLDatabaseRoutines\XML.TEACHERS.pas',
   XML.STUDENTS in '..\XMLDatabaseRoutines\XML.STUDENTS.pas',
-  SynergeticExport in 'SynergeticExport.pas' {FrmSynergeticExport},
-  ListTagNames in 'ListTagNames.pas' {FrmListTagNames};
+  SynergeticExport in 'SynergeticExport.pas' {FrmSynergeticExport};
 
 {$R *.RES}
 
@@ -228,13 +228,13 @@ uses
     or IMAGE_FILE_NET_RUN_FROM_SWAP}
 
 begin
- if MessageDlg('This build of Timechart is for testing only and cannot be released to any live site'+#13+
+{ if MessageDlg('This build of Timechart is for testing only and cannot be released to any live site'+#13+
              'It will conert several files in the database into XML format and once this is done it cannot be reversed. '+
              'There will be a release build of this XML update over the next couple of weeks and will include other enhancements aside from the underlying XML updated'+#13+#13+
              'OK to continue?',
              mtConfirmation,[mbYes, mbNo],0) <> mrYes then begin
     Exit;
-  end;
+  end;  }   //mantis-1622
   Application.Title := 'Network TimeChart 6';
   Application.HelpFile := '';
   Application.CreateForm(TMainForm, MainForm);
@@ -246,7 +246,6 @@ begin
   Application.CreateForm(TFrmVASSStudentChoicesExport, FrmVASSStudentChoicesExport);
   Application.CreateForm(TFrmTeacher, FrmTeacher);
   Application.CreateForm(TForm1, Form1);
-  Application.CreateForm(TFrmSynergeticExport, FrmSynergeticExport);
-  Application.CreateForm(TFrmListTagNames, FrmListTagNames);
+
   Application.Run;
 end.
