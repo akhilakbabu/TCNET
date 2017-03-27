@@ -535,6 +535,12 @@ begin
        j := 4
      else if (fn = 'SubWillCount.DAT')  then
        j := 2;
+
+      for i:=0 to  NumCodes[0]  do
+      begin
+         SubWillCount[i]  :='Y';
+     //    blockwrite(tmpF, SubWillCount[i],2);
+      end;
      blockwrite(tmpF,i,2);
      blockwrite(tmpF,j,2)
     end;
