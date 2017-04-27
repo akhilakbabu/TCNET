@@ -65,7 +65,7 @@ const
   szSubCode = 10;
   szSubnameDefault = 25;
   szSubnameMax = 50;
-  szSubWillCountMax =1; //mantis-1295
+  szSubWillCountMax =2; //mantis-1295
   szTeCode = 8;
   szTeName = 25;
   szDayName = 15;

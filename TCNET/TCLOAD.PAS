@@ -44,7 +44,7 @@ procedure initBlockdata;
 procedure getTeacherCodes;
 procedure AllotLoad;
 procedure getSubjectCodes;
-procedure getRoomCodes;
+procedure getRoomCodes;                   
 procedure HouseLoad;
 procedure LoadRollClasses;
 procedure getFaculty;
@@ -532,11 +532,20 @@ begin
      if fn = 'SUBCODE.DAT' then
        j := 6
      else if (fn = 'TECODE.DAT') or (fn = 'ROOMS.DAT') then
-       j := 4
-     else if (fn = 'SubWillCount.DAT')  then
-       j := 2;
-     blockwrite(tmpF,i,2);
-     blockwrite(tmpF,j,2)
+       j := 4 ;
+
+      blockwrite(tmpF,i,2);
+      blockwrite(tmpF,j,2)
+    end;
+     if (fn = 'SubWillCount.DAT')  then
+      begin
+       //j := 2;
+
+      for i := 1 to  NumCodes[0] do
+      begin
+         SubWillCount[i]  :='Y';
+         blockwrite(tmpF, SubWillCount[i],2);
+      end;
     end;
 
   finally
@@ -3920,7 +3929,7 @@ initialization
 // #992 - Auto build this line so that we dont forget
 {$Include UpdateReleaseDate.inc}
  //UpdateReleaseDate:=EncodeDate(2014,04,15); // EncodeDate(Year, Month, Day: Word)
-
+     UpdateReleaseDate:=Date;   //mantis aki-  1647
  namefile:='TCWP53.DAT';
 
  {School:='PROPERTY OF AMIG SYSTEMS   (EVALUATION COPY ONLY)';}
