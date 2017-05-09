@@ -5,8 +5,8 @@ object prefdlg: Tprefdlg
   ActiveControl = OKBtn
   BorderStyle = bsDialog
   Caption = 'Preferences'
-  ClientHeight = 328
-  ClientWidth = 592
+  ClientHeight = 374
+  ClientWidth = 606
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clBlack
@@ -22,13 +22,15 @@ object prefdlg: Tprefdlg
   PixelsPerInch = 96
   TextHeight = 13
   object ButtonPanel: TPanel
-    Left = 507
+    Left = 521
     Top = 0
     Width = 85
-    Height = 307
+    Height = 353
     Align = alRight
     BevelOuter = bvNone
     TabOrder = 0
+    ExplicitLeft = 507
+    ExplicitHeight = 307
     object Label12: TLabel
       Left = 21
       Top = 208
@@ -238,28 +240,31 @@ object prefdlg: Tprefdlg
   object Notebook: TNotebook
     Left = 0
     Top = 0
-    Width = 507
-    Height = 307
+    Width = 521
+    Height = 353
     Align = alClient
     PageIndex = 1
     TabOrder = 2
     IsControl = True
+    ExplicitWidth = 507
+    ExplicitHeight = 307
     object TPage
       Left = 0
       Top = 0
       Caption = 'Timetable '
       IsControl = True
-      ExplicitWidth = 0
-      ExplicitHeight = 0
+      ExplicitWidth = 507
+      ExplicitHeight = 307
       object GroupBox1: TGroupBox
         Left = 0
         Top = 0
-        Width = 507
+        Width = 521
         Height = 257
         Align = alTop
         Caption = 'Timetable'
         TabOrder = 0
         IsControl = True
+        ExplicitWidth = 507
         object Label4: TLabel
           Left = 10
           Top = 46
@@ -306,7 +311,7 @@ object prefdlg: Tprefdlg
           Width = 115
           Height = 21
           Style = csDropDownList
-          ItemHeight = 0
+          ItemHeight = 13
           TabOrder = 0
           OnChange = ComboBox2Change
         end
@@ -336,13 +341,13 @@ object prefdlg: Tprefdlg
       Left = 0
       Top = 0
       Caption = 'Print Timetable '
-      ExplicitWidth = 0
-      ExplicitHeight = 0
+      ExplicitWidth = 507
+      ExplicitHeight = 307
       object GroupBox7: TGroupBox
         Left = 4
         Top = 0
         Width = 501
-        Height = 300
+        Height = 340
         Caption = 'Print Timetable'
         TabOrder = 0
         IsControl = True
@@ -355,7 +360,7 @@ object prefdlg: Tprefdlg
         end
         object Label3: TLabel
           Left = 8
-          Top = 103
+          Top = 148
           Width = 79
           Height = 13
           Caption = 'Years Shown:'
@@ -368,7 +373,7 @@ object prefdlg: Tprefdlg
         end
         object CheckBox9: TCheckBox
           Left = 8
-          Top = 252
+          Top = 287
           Width = 141
           Height = 13
           Hint = 'Show Teachers free at bottom of main timetable'
@@ -377,7 +382,7 @@ object prefdlg: Tprefdlg
         end
         object CheckBox10: TCheckBox
           Left = 8
-          Top = 275
+          Top = 310
           Width = 125
           Height = 13
           Hint = 'Show Rooms free at bottom of main timetable'
@@ -406,7 +411,7 @@ object prefdlg: Tprefdlg
         end
         object Button3: TButton
           Left = 99
-          Top = 100
+          Top = 145
           Width = 45
           Height = 21
           Hint = 'Tick all years'
@@ -416,7 +421,7 @@ object prefdlg: Tprefdlg
         end
         object Button4: TButton
           Left = 157
-          Top = 100
+          Top = 145
           Width = 45
           Height = 21
           Hint = 'Clear all years'
@@ -426,7 +431,7 @@ object prefdlg: Tprefdlg
         end
         object GroupBox3: TGroupBox
           Left = 156
-          Top = 250
+          Top = 285
           Width = 338
           Height = 44
           Caption = 'Weekly Timetables'
@@ -476,8 +481,8 @@ object prefdlg: Tprefdlg
       Top = 0
       Caption = 'Student '
       IsControl = True
-      ExplicitWidth = 0
-      ExplicitHeight = 0
+      ExplicitWidth = 507
+      ExplicitHeight = 307
       object GroupBox2: TGroupBox
         Left = 4
         Top = 13
@@ -684,8 +689,8 @@ object prefdlg: Tprefdlg
       Left = 0
       Top = 0
       Caption = 'General '
-      ExplicitWidth = 0
-      ExplicitHeight = 0
+      ExplicitWidth = 507
+      ExplicitHeight = 307
       object GroupBox4: TGroupBox
         Left = 4
         Top = 7
@@ -972,8 +977,8 @@ object prefdlg: Tprefdlg
   end
   object TabSet: TTabSet
     Left = 0
-    Top = 307
-    Width = 592
+    Top = 353
+    Width = 606
     Height = 21
     Align = alBottom
     Font.Charset = DEFAULT_CHARSET
@@ -989,5 +994,7 @@ object prefdlg: Tprefdlg
       'General ')
     TabIndex = 0
     OnClick = TabSetClick
+    ExplicitTop = 307
+    ExplicitWidth = 592
   end
 end
