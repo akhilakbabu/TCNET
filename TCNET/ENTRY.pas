@@ -597,9 +597,9 @@ begin
  if Enlabel>0 then
   begin
    oldLabel:=TcLabel[EnLabel];
-   TcLabel[Enlabel]:='';
+ //  TcLabel[Enlabel]:='';   ak Mantis- 1652  11/05/2017
   end;
- newLabel:=TrimRight(EntryDlg.Edit5.Text);
+ newLabel:=TrimRight(EntryDlg.Edit5.Text);   
  checkstr:=newLabel;
  if (Enlabel=0) and (checkstr>'') then Enlabel:=FindLabel;
  if checkstr='' then Enlabel:=0;
@@ -616,6 +616,7 @@ begin
  if oldEnlabel=0 then Fclash[nd,np]:=1;
  if (oldLabel>'') and (oldLabel<>NewLabel) and (box=bxLevel) then LevelLabel(oldLabel,Newlabel);
  if (oldLabel>'') and (oldLabel<>NewLabel) and (box=bxYear) then YearLabel(oldLabel,Newlabel);
+ inc(Lnum);  //ak mantis-1652 11/05/2017
 end;
 
 function NotAddCheck(s: string):boolean;
@@ -708,7 +709,8 @@ if Labelbox.checked=false then
    exit;
   end;
   if not(flgshare) then if clashwarn(posd,posp,posy,posl) then exit; {don't do entry}
-  if Labelbox.checked then if labelwarn then exit;
+  if Labelbox.checked then
+    if labelwarn then exit;
  end; {not label}
 
  nd:=posd; np:=posp; ny:=posy; nl:=posl;

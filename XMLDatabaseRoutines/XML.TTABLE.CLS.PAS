@@ -116,8 +116,8 @@ begin
           _VALUE_FLOAT:=  StrToFloat(_Node.GetAttribute('VALUE'));
           if _verifyConversion then begin
             _checkForDifferences := compareValues(tsStart[_X,_Y],_VALUE_FLOAT);
-            if _checkForDifferences <> '' then
-                ShowMessage(format('tsStart[_%d,_%d]',[_X,_Y])+' <> _VALUE_FLOAT '+#13+_checkForDifferences);
+           // if _checkForDifferences <> '' then
+            //    ShowMessage(format('tsStart[_%d,_%d]',[_X,_Y])+' <> _VALUE_FLOAT '+#13+_checkForDifferences);
           end;
           tsStart[_X,_Y]:= _VALUE_FLOAT;
        end;
@@ -128,8 +128,8 @@ begin
           _VALUE_FLOAT:=  StrToFloat(_Node.GetAttribute('VALUE'));
           if _verifyConversion then begin
             _checkForDifferences := compareValues(tsEnd[_X,_Y],_VALUE_FLOAT);
-            if _checkForDifferences <> '' then
-                ShowMessage(format('tsEnd[_%d,_%d]',[_X,_Y])+' <> _VALUE_FLOAT '+#13+_checkForDifferences);
+           // if _checkForDifferences <> '' then
+             //   ShowMessage(format('tsEnd[_%d,_%d]',[_X,_Y])+' <> _VALUE_FLOAT '+#13+_checkForDifferences);
           end;
           tsEnd[_X,_Y]:= _VALUE_FLOAT;
        end;
@@ -141,7 +141,7 @@ begin
           if _verifyConversion then begin
             _checkForDifferences := compareValues(tsType[_X,_Y],_VALUE);
             if _checkForDifferences <> '' then
-                ShowMessage(format('tsType[_%d,_%d]',[_X,_Y])+' <> _VALUE '+#13+_checkForDifferences);
+               ShowMessage(format('tsType[_%d,_%d]',[_X,_Y])+' <> _VALUE '+#13+_checkForDifferences);
           end;
           tsType[_X,_Y]:= _VALUE;
        end;
@@ -240,7 +240,7 @@ begin
     for x:=0 to tmpD do
         for y:=0 to Tlimit[x]-1 do
         begin
-          if tsStart[x,y] < EncodeDate(1999,01,01)  then
+          if tsStart[x,y] > EncodeDate(1999,01,01)  then  //ak mantis-0001661:  was '<'
             continue;
           _Node := _Root.AddChild('TSSTART');
           _Node.SetAttribute(ATTRIBUTE_X, IntToStr(x));
@@ -251,7 +251,7 @@ begin
     for x:=0 to tmpD do
         for y:=0 to Tlimit[x]-1 do
         begin
-          if tsEnd[x,y] < EncodeDate(1999,01,01)  then
+          if tsEnd[x,y] > EncodeDate(1999,01,01)  then   //ak mantis-0001661:  was '<'
             continue;
           _Node := _Root.AddChild('TSEND');
           _Node.SetAttribute(ATTRIBUTE_X, IntToStr(x));

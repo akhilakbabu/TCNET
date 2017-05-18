@@ -432,7 +432,7 @@ begin
  if Enlabel>0 then
   begin
    oldLabel:=TcLabel[EnLabel];
-   TcLabel[Enlabel]:='';
+  // TcLabel[Enlabel]:='';   //ak Mantis- 1652  11/05/2017
   end;
  newLabel:=TrimRight(wsEntryDlg.Edit5.Text);
  checkstr:=newLabel;

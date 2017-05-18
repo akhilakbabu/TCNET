@@ -150,6 +150,7 @@ type
     procedure ShowStudentSubjectClashes(Sender: TObject);
     procedure Build1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure WorkSheet1Click(Sender: TObject);
   public
     procedure UpdateTTclashBar;
     procedure InitTTWin;
@@ -902,7 +903,7 @@ begin
     begin
      TopColor(cpNormal);  tmpStr:='';
      su:=su-labelbase;
-     if (su<=Lnum) then tmpStr:=TcLabel[su];
+     if (su<=Lnum)  then tmpStr:=TcLabel[su];       //ak mantis-1652  no change (su<=Lnum)   11/05/2017
      localWide:=stringgrid1.canvas.textwidth(tmpStr);
      OutString;
     end
@@ -1173,6 +1174,11 @@ end;
 procedure TTtablewin.Version1Click(Sender: TObject);
 begin
  mainform.Version1Click(Self)
+end;
+
+procedure TTtablewin.WorkSheet1Click(Sender: TObject);
+begin
+  WorksheetWinSelect;
 end;
 
 procedure TTtablewin.Years1Click(Sender: TObject);

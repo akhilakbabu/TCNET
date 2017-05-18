@@ -41,6 +41,7 @@ begin
           _INDEX:= StrToIntDef(_Node.GetAttribute('INDEX'),0);
           _VALUE_STRING:= _Node.GetAttribute('VALUE');
           TcLabel[_INDEX]:= _VALUE_STRING;
+          inc(lnum);  //Mantis-1652 11/05/2017;
        end;
 
     end;  // while _Root.GetNextChild(_Node) do

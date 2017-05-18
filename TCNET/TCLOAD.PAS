@@ -35,6 +35,7 @@ type
     function RefreshTags: Boolean;
     procedure DEETdumpOut(const pExcludeNonTtabled: Boolean = False; const pCases21Spec: Boolean = true);
     procedure SetupApp;
+//    function PreviousVersion : Boolean;
   end;
 
 procedure getTTable;
@@ -149,12 +150,12 @@ begin
    messagedlg(ExpiredSupportMsg, mtError, [mbOK], 0);
   end;
 
- if ((AppReadStr<>'Network Time Chart 2000') and (AppReadStr<>'Network Time Chart 6'))
+ {if ((AppReadStr<>'Network Time Chart 2000') and (AppReadStr<>'Network Time Chart 6'))
      or (UpdateReleaseDate>SupportExpiryKeyCheckDate) or (Failed) then
   begin
    School:='Application Validation - FAILED!';  //one of our keyfiles, but not for Time Chart version 5
    exit;
-  end;
+  end;   }
  result:=true;
 
  Source:=GetEncryptStr('TCCNET.DAT','©Ncevy 2009ª¹°¿ NZVT FLFGRZF¶@±GP6.0 Argjbex¾´·ºß');
@@ -416,7 +417,7 @@ begin
       dummyByte:=0;
       newtimefile:= XMLHelper.getTTW_EXTENSION(FileNames.LoadedTimeTable ,toWrite); {new}
     finally
-      CloseFile(f);
+   //   CloseFile(f);      //ak mantis-1652:- 11/05/2017
       Application.ProcessMessages;
     end;
   except
@@ -555,6 +556,30 @@ begin
  except
  end;
 end;
+
+{function PreviousVersion : Boolean;
+var  f: file;
+begin
+
+   if fileexists('PrevVer.DAT') then
+ begin
+  try
+  try
+      doAssignFile(f,'PrevVer.DAT');
+       filemode:=fmOpenRead+fmShareDenyNone;
+       reset(f,1);
+       blockread(f,a,2);
+
+    finally
+     closefile(f)
+    end;
+   except
+   end;
+  else makefile('PrevVer.DAT');
+ end
+
+end; }
+
 
 Procedure DefaultDayNames;
 var
