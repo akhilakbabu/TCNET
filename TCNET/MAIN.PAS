@@ -443,6 +443,7 @@ uses
     procedure FormActivate(Sender: TObject);
     procedure ListTagNames1Click(Sender: TObject);
     procedure SynergeticExport1Click(Sender: TObject);
+    procedure Compass1Click(Sender: TObject);
   private
     function RefreshTtableToolbar: Boolean;
   public
@@ -1176,6 +1177,11 @@ begin
    edstuddlg.free;   {release dlg}
    CheckAccessRights(utStud,36,false)
   end;
+end;
+
+procedure TMainForm.Compass1Click(Sender: TObject);
+begin
+
 end;
 
 {
